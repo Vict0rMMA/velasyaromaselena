@@ -13,15 +13,12 @@ Sitio web profesional para venta de velas artesanales con carrito de compras int
 
 ## 🚀 Despliegue
 
-### Netlify
-1. Ve a [netlify.com](https://netlify.com)
-2. Arrastra la carpeta del proyecto
-3. Tu sitio estará en: `https://tu-sitio.netlify.app`
-
-### Vercel
+### Vercel (Recomendado)
 1. Ve a [vercel.com](https://vercel.com)
-2. Conecta tu repositorio de GitHub
-3. Tu sitio estará en: `https://tu-sitio.vercel.app`
+2. Regístrate con tu cuenta de GitHub
+3. Haz clic en "New Project"
+4. Selecciona tu repositorio `velasyaromaselena`
+5. Tu sitio estará en: `https://velasyaromaselena.vercel.app`
 
 ## 📁 Estructura del Proyecto
 
@@ -38,7 +35,6 @@ velasyaromaselena/
 │       ├── vela1.svg
 │       ├── vela2.svg
 │       └── vela3.svg
-├── _redirects          # Configuración Netlify
 ├── vercel.json         # Configuración Vercel
 └── README.md           # Este archivo
 ```
