@@ -1,0 +1,56 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rosaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE4E1;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF69B4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF4500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo -->
+  <rect width="200" height="200" fill="url(#rosaGradient)" opacity="0.1"/>
+  
+  <!-- Vela -->
+  <g transform="translate(100, 160)">
+    <!-- Base de la vela -->
+    <rect x="-15" y="0" width="30" height="60" rx="5" fill="#F5F5DC" stroke="#8B7355" stroke-width="2"/>
+    
+    <!-- Mecha -->
+    <rect x="-2" y="-10" width="4" height="15" fill="#2F2F2F"/>
+    
+    <!-- Llama -->
+    <ellipse cx="0" cy="-15" rx="8" ry="12" fill="url(#flameGradient)"/>
+    <ellipse cx="0" cy="-18" rx="4" ry="6" fill="#FFFFFF" opacity="0.8"/>
+    
+    <!-- Decoración de rosas -->
+    <g transform="translate(0, -5)">
+      <!-- Pétalos de rosa -->
+      <path d="M-10 -5 Q-5 -10 0 -5 Q5 -10 10 -5 Q5 0 0 -5 Q-5 0 -10 -5 Z" fill="#FF69B4"/>
+      <path d="M-8 -8 Q-4 -12 0 -8 Q4 -12 8 -8 Q4 -4 0 -8 Q-4 -4 -8 -8 Z" fill="#FF1493"/>
+      <path d="M-6 -11 Q-3 -14 0 -11 Q3 -14 6 -11 Q3 -8 0 -11 Q-3 -8 -6 -11 Z" fill="#DC143C"/>
+      
+      <!-- Hojas -->
+      <ellipse cx="-12" cy="-2" rx="4" ry="2" fill="#228B22" transform="rotate(-30)"/>
+      <ellipse cx="12" cy="-2" rx="4" ry="2" fill="#228B22" transform="rotate(30)"/>
+    </g>
+    
+    <!-- Brillo en la vela -->
+    <rect x="-12" y="5" width="8" height="50" fill="rgba(255,255,255,0.3)" rx="3"/>
+  </g>
+  
+  <!-- Partículas de aroma -->
+  <circle cx="60" cy="70" r="2" fill="#FF69B4" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="50" r="2" fill="#FF1493" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="90" cy="30" r="2" fill="#DC143C" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+</svg> 

@@ -1,0 +1,59 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lavandaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E6E6FA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9370DB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4B0082;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF4500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo -->
+  <rect width="200" height="200" fill="url(#lavandaGradient)" opacity="0.1"/>
+  
+  <!-- Vela -->
+  <g transform="translate(100, 160)">
+    <!-- Base de la vela -->
+    <rect x="-15" y="0" width="30" height="60" rx="5" fill="#F5F5DC" stroke="#8B7355" stroke-width="2"/>
+    
+    <!-- Mecha -->
+    <rect x="-2" y="-10" width="4" height="15" fill="#2F2F2F"/>
+    
+    <!-- Llama -->
+    <ellipse cx="0" cy="-15" rx="8" ry="12" fill="url(#flameGradient)"/>
+    <ellipse cx="0" cy="-18" rx="4" ry="6" fill="#FFFFFF" opacity="0.8"/>
+    
+    <!-- Decoración de lavanda -->
+    <g transform="translate(0, -5)">
+      <!-- Tallos de lavanda -->
+      <line x1="-8" y1="0" x2="-8" y2="-20" stroke="#228B22" stroke-width="2"/>
+      <line x1="8" y1="0" x2="8" y2="-20" stroke="#228B22" stroke-width="2"/>
+      
+      <!-- Flores de lavanda -->
+      <circle cx="-8" cy="-5" r="3" fill="#9370DB"/>
+      <circle cx="-8" cy="-10" r="3" fill="#8A2BE2"/>
+      <circle cx="-8" cy="-15" r="3" fill="#9370DB"/>
+      <circle cx="8" cy="-5" r="3" fill="#9370DB"/>
+      <circle cx="8" cy="-10" r="3" fill="#8A2BE2"/>
+      <circle cx="8" cy="-15" r="3" fill="#9370DB"/>
+    </g>
+    
+    <!-- Brillo en la vela -->
+    <rect x="-12" y="5" width="8" height="50" fill="rgba(255,255,255,0.3)" rx="3"/>
+  </g>
+  
+  <!-- Partículas de aroma -->
+  <circle cx="50" cy="80" r="2" fill="#9370DB" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="60" r="2" fill="#8A2BE2" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="80" cy="40" r="2" fill="#9370DB" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+</svg> 

@@ -1,0 +1,62 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lavandaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E6E6FA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9370DB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4B0082;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF4500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo -->
+  <rect width="200" height="200" fill="url(#lavandaGradient)" opacity="0.1"/>
+  
+  <!-- Vela Grande -->
+  <g transform="translate(100, 160)">
+    <!-- Base de la vela grande -->
+    <rect x="-20" y="0" width="40" height="80" rx="8" fill="#F5F5DC" stroke="#8B7355" stroke-width="3"/>
+    
+    <!-- Mecha -->
+    <rect x="-3" y="-12" width="6" height="18" fill="#2F2F2F"/>
+    
+    <!-- Llama grande -->
+    <ellipse cx="0" cy="-18" rx="12" ry="16" fill="url(#flameGradient)"/>
+    <ellipse cx="0" cy="-22" rx="6" ry="8" fill="#FFFFFF" opacity="0.8"/>
+    
+    <!-- Decoración de lavanda -->
+    <g transform="translate(0, -8)">
+      <!-- Tallos de lavanda -->
+      <line x1="-12" y1="0" x2="-12" y2="-25" stroke="#228B22" stroke-width="3"/>
+      <line x1="12" y1="0" x2="12" y2="-25" stroke="#228B22" stroke-width="3"/>
+      
+      <!-- Flores de lavanda -->
+      <circle cx="-12" cy="-5" r="4" fill="#9370DB"/>
+      <circle cx="-12" cy="-12" r="4" fill="#8A2BE2"/>
+      <circle cx="-12" cy="-19" r="4" fill="#9370DB"/>
+      <circle cx="12" cy="-5" r="4" fill="#9370DB"/>
+      <circle cx="12" cy="-12" r="4" fill="#8A2BE2"/>
+      <circle cx="12" cy="-19" r="4" fill="#9370DB"/>
+    </g>
+    
+    <!-- Brillo en la vela -->
+    <rect x="-16" y="8" width="12" height="64" fill="rgba(255,255,255,0.3)" rx="4"/>
+    
+    <!-- Indicador de tamaño -->
+    <text x="0" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#9370DB" font-weight="bold">6×10</text>
+  </g>
+  
+  <!-- Partículas de aroma -->
+  <circle cx="50" cy="80" r="3" fill="#9370DB" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="60" r="3" fill="#8A2BE2" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="80" cy="40" r="3" fill="#9370DB" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+</svg> 

@@ -1,7 +1,18 @@
-// Efectos de partículas flotantes - DESACTIVADAS
+// Efectos de partículas doradas sutiles
 function createParticles() {
-  // Las partículas están desactivadas para mejor rendimiento móvil
-  return;
+  const particlesContainer = document.createElement('div');
+  particlesContainer.className = 'floating-particles';
+  document.body.appendChild(particlesContainer);
+
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 4 + 's';
+    particle.style.animationDuration = (Math.random() * 2 + 3) + 's';
+    particlesContainer.appendChild(particle);
+  }
 }
 
 // Efecto de escritura para el título
@@ -237,7 +248,13 @@ function agregarCarrito(nombre) {
   const productos = {
     'Cedro Verbena 6×6': { precio: 32900, imagen: 'assets/productos/vela1.svg' },
     'Tilo Bamboo 6×6': { precio: 32900, imagen: 'assets/productos/vela2.svg' },
-    'Cedro Verbena 6×10': { precio: 39900, imagen: 'assets/productos/vela3.svg' }
+    'Cedro Verbena 6×10': { precio: 39900, imagen: 'assets/productos/vela3.svg' },
+    'Lavanda Relajante 6×6': { precio: 35900, imagen: 'assets/productos/vela4.svg' },
+    'Rosa Silvestre 6×6': { precio: 38900, imagen: 'assets/productos/vela5.svg' },
+    'Menta Eucalipto 6×6': { precio: 33900, imagen: 'assets/productos/vela6.svg' },
+    'Lavanda Relajante 6×10': { precio: 42900, imagen: 'assets/productos/vela7.svg' },
+    'Rosa Silvestre 6×10': { precio: 45900, imagen: 'assets/productos/vela8.svg' },
+    'Set 3 Velas 6×6': { precio: 89900, imagen: 'assets/productos/vela9.svg' }
   };
   
   const producto = productos[nombre];
@@ -381,31 +398,34 @@ function showNotification(message) {
     right: 20px;
     background: linear-gradient(45deg, #4CAF50, #45a049);
     color: white;
-    padding: 20px 30px;
+    padding: 15px 25px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     z-index: 10000;
     transform: translateX(400px);
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    max-width: 300px;
   `;
   notification.innerHTML = message;
   
   document.body.appendChild(notification);
   
-  // Animación de entrada
+  // Animación de entrada más rápida
   setTimeout(() => {
     notification.style.transform = 'translateX(0)';
-  }, 100);
+  }, 50);
   
-  // Animación de salida
+  // Animación de salida más rápida (1.5 segundos en lugar de 3)
   setTimeout(() => {
     notification.style.transform = 'translateX(400px)';
     setTimeout(() => {
-      document.body.removeChild(notification);
-    }, 300);
-  }, 3000);
+      if (document.body.contains(notification)) {
+        document.body.removeChild(notification);
+      }
+    }, 200);
+  }, 1500);
 }
 
 // Agregar animación de ripple al CSS

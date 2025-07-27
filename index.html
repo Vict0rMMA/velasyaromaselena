@@ -51,6 +51,7 @@
   </div>
 
   <main>
+    <!-- SECCIÓN HERO - BIENVENIDA -->
     <section class="hero">
       <h1>Descubre el arte de la aromaterapia</h1>
       <p>Velas artesanales y fragancias naturales ✨</p>
@@ -64,13 +65,16 @@
       </div>
     </section>
 
+    <!-- SECCIÓN PRODUCTOS - CATÁLOGO -->
+    <hr class="section-divider">
     <section id="productos" class="galeria">
       <h2>✨ Nuestras Velas Artesanales ✨</h2>
       <p class="galeria-subtitle">Descubre nuestra colección de velas aromáticas hechas con cera natural y aceites esenciales premium</p>
       <div class="productos-container">
+        <!-- COLECCIÓN PRINCIPAL -->
         <div class="producto">
-          <div class="producto-badge">Más Vendida</div>
-          <img src="assets/productos/vela1.svg" alt="Cedro Verbena 6×6" />
+          <div class="producto-badge">🔥 Más Vendida</div>
+          <img src="assets/productos/cedro-verbena-6x6.jpg" alt="Cedro Verbena 6×6" />
           <h3>CEDRO VERBENA 6×6</h3>
           <p class="producto-descripcion">Aroma relajante de cedro y verbena</p>
           <p class="precio">$32.900 COP</p>
@@ -78,8 +82,9 @@
             <i class="fas fa-shopping-cart"></i> Añadir al carrito
           </button>
         </div>
+        
         <div class="producto">
-          <div class="producto-badge">Nueva</div>
+          <div class="producto-badge">✨ Nueva</div>
           <img src="assets/productos/vela2.svg" alt="Tilo Bamboo 6×6" />
           <h3>TILO BAMBOO 6×6</h3>
           <p class="producto-descripcion">Fragancia suave de tilo y bambú</p>
@@ -88,8 +93,9 @@
             <i class="fas fa-shopping-cart"></i> Añadir al carrito
           </button>
         </div>
+        
         <div class="producto">
-          <div class="producto-badge">Oferta</div>
+          <div class="producto-badge">💎 Oferta</div>
           <img src="assets/productos/vela3.svg" alt="Cedro Verbena 6×10" />
           <h3>CEDRO VERBENA 6×10</h3>
           <p class="producto-descripcion">Versión grande con mayor duración</p>
@@ -98,14 +104,86 @@
             <i class="fas fa-shopping-cart"></i> Añadir al carrito
           </button>
         </div>
+        
+        <!-- NUEVOS PRODUCTOS -->
+        <div class="producto">
+          <div class="producto-badge">🌿 Natural</div>
+          <img src="assets/productos/vela4.svg" alt="Lavanda Relajante 6×6" />
+          <h3>LAVANDA RELAJANTE 6×6</h3>
+          <p class="producto-descripcion">Aroma calmante de lavanda pura</p>
+          <p class="precio">$35.900 COP</p>
+          <button onclick="agregarCarrito('Lavanda Relajante 6×6', 35900)">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🌸 Premium</div>
+          <img src="assets/productos/vela5.svg" alt="Rosa Silvestre 6×6" />
+          <h3>ROSA SILVESTRE 6×6</h3>
+          <p class="producto-descripcion">Fragancia romántica de rosas</p>
+          <p class="precio">$38.900 COP</p>
+          <button onclick="agregarCarrito('Rosa Silvestre 6×6', 38900)">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🌊 Fresca</div>
+          <img src="assets/productos/vela6.svg" alt="Menta Eucalipto 6×6" />
+          <h3>MENTA EUCALIPTO 6×6</h3>
+          <p class="producto-descripcion">Aroma refrescante y energizante</p>
+          <p class="precio">$33.900 COP</p>
+          <button onclick="agregarCarrito('Menta Eucalipto 6×6', 33900)">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <!-- VELAS GRANDES -->
+        <div class="producto">
+          <div class="producto-badge">🕯️ Grande</div>
+          <img src="assets/productos/vela7.svg" alt="Lavanda Relajante 6×10" />
+          <h3>LAVANDA RELAJANTE 6×10</h3>
+          <p class="producto-descripcion">Versión grande para espacios amplios</p>
+          <p class="precio"><s>$48.900</s> $42.900 COP</p>
+          <button onclick="agregarCarrito('Lavanda Relajante 6×10', 42900)">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🌟 Premium</div>
+          <img src="assets/productos/vela8.svg" alt="Rosa Silvestre 6×10" />
+          <h3>ROSA SILVESTRE 6×10</h3>
+          <p class="producto-descripcion">Versión grande con aroma intenso</p>
+          <p class="precio"><s>$52.900</s> $45.900 COP</p>
+          <button onclick="agregarCarrito('Rosa Silvestre 6×10', 45900)">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🎁 Regalo</div>
+          <img src="assets/productos/vela9.svg" alt="Set 3 Velas 6×6" />
+          <h3>SET 3 VELAS 6×6</h3>
+          <p class="producto-descripcion">Pack perfecto para regalo</p>
+          <p class="precio"><s>$98.700</s> $89.900 COP</p>
+          <button onclick="agregarCarrito('Set 3 Velas 6×6', 89900)">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
       </div>
     </section>
 
+    <!-- SECCIÓN NOSOTROS - HISTORIA -->
+    <hr class="section-divider">
     <section id="nosotros" class="nosotros">
       <h2>Sobre Nosotros</h2>
       <p>Elena diseña cada vela artesanalmente usando cera natural y aceites esenciales premium 🌿</p>
     </section>
 
+    <!-- SECCIÓN CONTACTO - INFORMACIÓN -->
+    <hr class="section-divider">
     <section id="contacto" class="contacto">
       <h2>Contáctanos</h2>
       <p>Escríbenos por <a href="https://wa.me/573008220389" target="_blank">WhatsApp 3008220389</a>, en Instagram <a href="https://www.instagram.com/velasyaromaselena" target="_blank">@velasyaromaselena</a> o en Facebook <a href="https://www.facebook.com/velasyaromaselena" target="_blank">@velasyaromaselena</a></p>
