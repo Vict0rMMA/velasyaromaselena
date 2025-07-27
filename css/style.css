@@ -662,27 +662,206 @@ body {
   border-top: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-/* Responsive */
+/* Responsive para móviles */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .nav {
+  /* Header responsive */
+  .header {
+    padding: 10px 20px;
+    flex-direction: column;
     gap: 15px;
   }
   
+  .logo {
+    height: 50px;
+  }
+  
+  .nav {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
   .nav a {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 8px 15px;
+  }
+  
+  .cart-icon {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+  
+  /* Hero responsive */
+  .hero {
+    padding: 120px 20px 60px;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+  
+  /* Productos responsive */
+  .galeria {
+    padding: 40px 20px;
+  }
+  
+  .galeria h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
   }
   
   .productos-container {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .producto {
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .producto img {
+    height: 200px;
+  }
+  
+  .producto h3 {
+    font-size: 1.1rem;
+  }
+  
+  .producto button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+  
+  /* Carrito responsive */
+  .cart-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .cart-item img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .cart-item-quantity {
+    justify-content: center;
+  }
+  
+  /* Secciones responsive */
+  .nosotros, .contacto {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .nosotros h2, .contacto h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .nosotros p, .contacto p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Footer responsive */
+  .footer {
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+/* Responsive para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    padding: 15px 30px;
+  }
+  
+  .nav {
+    gap: 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .productos-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
   
   .galeria, .nosotros, .contacto {
-    padding: 60px 20px;
+    padding: 60px 30px;
+  }
+}
+
+/* Responsive para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 15px;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .nav a {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    font-size: 0.9rem;
+  }
+  
+  .cta-button {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .galeria h2 {
+    font-size: 1.8rem;
+  }
+  
+  .producto {
+    padding: 15px;
+  }
+  
+  .producto img {
+    height: 150px;
   }
 }
 
