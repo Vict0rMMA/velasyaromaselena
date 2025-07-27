@@ -1,0 +1,59 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="velaGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="flameGradient3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff4500;stop-opacity:0.8" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Fondo con estilo Instagram -->
+  <rect width="300" height="300" fill="#0a0a0a"/>
+  
+  <!-- Etiqueta de descuento -->
+  <circle cx="250" cy="50" r="30" fill="#ffd700"/>
+  <text x="250" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000">-11%</text>
+  <text x="250" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#000">OFF</text>
+  
+  <!-- Elementos decorativos de fondo -->
+  <circle cx="50" cy="60" r="20" fill="#ffd700" opacity="0.1"/>
+  <circle cx="260" cy="120" r="15" fill="#daa520" opacity="0.15"/>
+  <circle cx="70" cy="250" r="25" fill="#ffd700" opacity="0.1"/>
+  
+  <!-- Base de la vela (más grande) -->
+  <rect x="110" y="180" width="80" height="100" fill="url(#velaGradient3)" rx="8"/>
+  
+  <!-- Cuerpo de la vela (más alto) -->
+  <rect x="115" y="100" width="70" height="80" fill="#f5f5dc" rx="5"/>
+  
+  <!-- Mecha -->
+  <rect x="145" y="90" width="8" height="15" fill="#2c2c2c"/>
+  
+  <!-- Llama -->
+  <ellipse cx="149" cy="85" rx="10" ry="15" fill="url(#flameGradient3)"/>
+  <ellipse cx="149" cy="80" rx="5" ry="8" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Aromas visuales (ondas más pronunciadas) -->
+  <path d="M 170 75 Q 185 70 200 75 Q 215 80 230 75" stroke="#ffd700" stroke-width="3" fill="none" opacity="0.9"/>
+  <path d="M 130 70 Q 115 65 100 70 Q 85 75 70 70" stroke="#daa520" stroke-width="3" fill="none" opacity="0.9"/>
+  
+  <!-- Elementos decorativos adicionales -->
+  <circle cx="60" cy="80" r="5" fill="#ffd700" opacity="0.8"/>
+  <circle cx="240" cy="100" r="4" fill="#ffd700" opacity="0.6"/>
+  <circle cx="80" cy="220" r="6" fill="#ffd700" opacity="0.7"/>
+  
+  <!-- Estrellas decorativas -->
+  <polygon points="40,40 42,45 47,45 43,48 45,53 40,50 35,53 37,48 33,45 38,45" fill="#ffd700" opacity="0.8"/>
+  <polygon points="260,200 262,205 267,205 263,208 265,213 260,210 255,213 257,208 253,205 258,205" fill="#ffd700" opacity="0.6"/>
+  
+  <!-- Texto del producto -->
+  <text x="150" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffd700">CEDRO VERBENA 6×10</text>
+  <text x="150" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffd700">
+    <tspan x="150" dy="0"><s>$44.900</s></tspan>
+    <tspan x="150" dy="20" fill="#ffffff">$39.900 COP</tspan>
+  </text>
+</svg> 

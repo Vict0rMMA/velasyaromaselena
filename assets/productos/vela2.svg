@@ -1,0 +1,56 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="velaGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#228B22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#006400;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="flameGradient2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff4500;stop-opacity:0.8" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Fondo con estilo Instagram -->
+  <rect width="300" height="300" fill="#0a0a0a"/>
+  
+  <!-- Elementos decorativos de fondo -->
+  <circle cx="60" cy="60" r="25" fill="#ffd700" opacity="0.1"/>
+  <circle cx="240" cy="90" r="20" fill="#daa520" opacity="0.15"/>
+  <circle cx="90" cy="240" r="30" fill="#ffd700" opacity="0.1"/>
+  
+  <!-- Base de la vela (estilo bamboo) -->
+  <rect x="120" y="200" width="60" height="80" fill="url(#velaGradient2)" rx="5"/>
+  
+  <!-- Cuerpo de la vela con textura bamboo -->
+  <rect x="125" y="120" width="50" height="80" fill="#f0f8f0" rx="3"/>
+  
+  <!-- Nudos del bamboo -->
+  <rect x="125" y="140" width="50" height="3" fill="#228B22" opacity="0.6"/>
+  <rect x="125" y="160" width="50" height="3" fill="#228B22" opacity="0.6"/>
+  <rect x="125" y="180" width="50" height="3" fill="#228B22" opacity="0.6"/>
+  
+  <!-- Mecha -->
+  <rect x="147" y="110" width="6" height="15" fill="#2c2c2c"/>
+  
+  <!-- Llama -->
+  <ellipse cx="150" cy="105" rx="8" ry="12" fill="url(#flameGradient2)"/>
+  <ellipse cx="150" cy="100" rx="4" ry="6" fill="#ffffff" opacity="0.8"/>
+  
+  <!-- Aromas visuales (ondas doradas) -->
+  <path d="M 160 90 Q 170 85 180 90 Q 190 95 200 90" stroke="#ffd700" stroke-width="2" fill="none" opacity="0.8"/>
+  <path d="M 140 85 Q 130 80 120 85 Q 110 90 100 85" stroke="#daa520" stroke-width="2" fill="none" opacity="0.8"/>
+  
+  <!-- Hojas decorativas -->
+  <ellipse cx="80" cy="80" rx="15" ry="8" fill="#ffd700" opacity="0.3" transform="rotate(45 80 80)"/>
+  <ellipse cx="220" cy="120" rx="12" ry="6" fill="#daa520" opacity="0.3" transform="rotate(-30 220 120)"/>
+  
+  <!-- Texto del producto -->
+  <text x="150" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffd700">TILO BAMBOO 6×6</text>
+  <text x="150" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">$32.900 COP</text>
+  
+  <!-- Elementos decorativos adicionales -->
+  <circle cx="70" cy="70" r="4" fill="#32CD32" opacity="0.7"/>
+  <circle cx="230" cy="80" r="3" fill="#228B22" opacity="0.5"/>
+  <circle cx="80" cy="230" r="5" fill="#32CD32" opacity="0.6"/>
+</svg> 

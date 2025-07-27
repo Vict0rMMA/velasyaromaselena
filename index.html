@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velas y Aromas Elena</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="assets/logo.svg" alt="Velas y Aromas Elena" class="logo" />
+    <nav class="nav">
+      <a href="#"><i class="fas fa-home"></i> Inicio</a>
+      <a href="#productos"><i class="fas fa-fire"></i> Productos</a>
+      <a href="#nosotros"><i class="fas fa-heart"></i> Nosotros</a>
+      <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+    </nav>
+    <div class="cart-icon" onclick="toggleCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+  </header>
+
+  <!-- Carrito de compras -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-cart"></i> Carrito de Compras</h3>
+      <button class="close-cart" onclick="toggleCart()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Los items del carrito se agregarán aquí dinámicamente -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">$0 COP</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">
+        <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <h1>Descubre el arte de la aromaterapia</h1>
+      <p>Velas artesanales y fragancias naturales ✨</p>
+      <div class="hero-buttons">
+        <button class="cta-button" onclick="scrollToSection('productos')">
+          <i class="fas fa-shopping-cart"></i> Ver Productos
+        </button>
+        <button class="cta-button secondary" onclick="scrollToSection('nosotros')">
+          <i class="fas fa-info-circle"></i> Conoce Más
+        </button>
+      </div>
+    </section>
+
+    <section id="productos" class="galeria">
+      <h2>Nuestras Velas</h2>
+      <div class="productos-container">
+        <div class="producto">
+          <img src="assets/productos/vela1.svg" alt="Cedro Verbena 6×6" />
+          <h3>CEDRO VERBENA 6×6</h3>
+          <p class="precio">$32.900 COP</p>
+          <button onclick="agregarCarrito('Cedro Verbena 6×6')">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="assets/productos/vela2.svg" alt="Tilo Bamboo 6×6" />
+          <h3>TILO BAMBOO 6×6</h3>
+          <p class="precio">$32.900 COP</p>
+          <button onclick="agregarCarrito('Tilo Bamboo 6×6')">Añadir al carrito</button>
+        </div>
+        <div class="producto">
+          <img src="assets/productos/vela3.svg" alt="Cedro Verbena 6×10" />
+          <h3>CEDRO VERBENA 6×10</h3>
+          <p class="precio"><s>$44.900</s> $39.900 COP</p>
+          <button onclick="agregarCarrito('Cedro Verbena 6×10')">Añadir al carrito</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="nosotros">
+      <h2>Sobre Nosotros</h2>
+      <p>Elena diseña cada vela artesanalmente usando cera natural y aceites esenciales premium 🌿</p>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <h2>Contáctanos</h2>
+      <p>Escríbenos por <a href="https://wa.me/573008220389" target="_blank">WhatsApp 3008220389</a>, en Instagram <a href="https://www.instagram.com/velasyaromaselena" target="_blank">@velasyaromaselena</a> o en Facebook <a href="https://www.facebook.com/velasyaromaselena" target="_blank">@velasyaromaselena</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Velas y Aromas Elena</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html> 
