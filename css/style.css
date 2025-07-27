@@ -24,17 +24,29 @@ body {
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
   color: #333;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* Animaciones globales */
+/* Animaciones globales optimizadas */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Optimización de animaciones para mejor performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -105,21 +117,54 @@ body {
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 215, 0, 0.3);
   padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   animation: fadeInUp 0.8s ease;
 }
 
-.logo {
-  height: 70px;
-  animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
+
+/* Menú hamburguesa */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1002;
+}
+
+.hamburger-menu span {
+  width: 25px;
+  height: 3px;
+  background: #ffd700;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Logo removido - estilos eliminados */
 
 .nav {
   display: flex;
   gap: 30px;
+  margin: 0 auto; /* Centrar la navegación */
 }
 
 .nav a {
@@ -551,6 +596,7 @@ body {
   margin: 0;
   border-top: 2px solid rgba(255, 215, 0, 0.1);
   border-bottom: 2px solid rgba(255, 215, 0, 0.1);
+  transform: translateZ(0); /* Optimización para GPU */
 }
 
 .galeria h2 {
@@ -597,6 +643,7 @@ body {
   overflow: hidden;
   animation: fadeInUp 0.8s ease;
   backdrop-filter: blur(15px);
+  will-change: transform;
 }
 
 .producto::before {
@@ -650,8 +697,8 @@ body {
 }
 
 .producto:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
   border-color: rgba(255, 215, 0, 0.8);
   background: rgba(255, 255, 255, 0.12);
 }
@@ -745,22 +792,206 @@ body {
   color: #cccccc;
 }
 
-.contacto a {
+/* Nueva sección de contacto mejorada */
+.contacto-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.contacto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contacto-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.contacto-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Colores oficiales de WhatsApp */
+.contacto-item.whatsapp-primary {
+  border-color: rgba(37, 211, 102, 0.3);
+  background: rgba(37, 211, 102, 0.05);
+}
+
+.contacto-item.whatsapp-primary:hover {
+  border-color: rgba(37, 211, 102, 0.6);
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.contacto-item.whatsapp-primary i {
+  color: #25D366;
+}
+
+.contacto-item.whatsapp-primary h3 {
+  color: #25D366;
+}
+
+/* WhatsApp secundario con color ligeramente diferente */
+.contacto-item.whatsapp-secondary {
+  border-color: rgba(18, 140, 126, 0.3);
+  background: rgba(18, 140, 126, 0.05);
+}
+
+.contacto-item.whatsapp-secondary:hover {
+  border-color: rgba(18, 140, 126, 0.6);
+  background: rgba(18, 140, 126, 0.1);
+}
+
+.contacto-item.whatsapp-secondary i {
+  color: #128C7E;
+}
+
+.contacto-item.whatsapp-secondary h3 {
+  color: #128C7E;
+}
+
+/* Colores oficiales de Instagram */
+.contacto-item.instagram {
+  border-color: rgba(225, 48, 108, 0.3);
+  background: rgba(225, 48, 108, 0.05);
+}
+
+.contacto-item.instagram:hover {
+  border-color: rgba(225, 48, 108, 0.6);
+  background: rgba(225, 48, 108, 0.1);
+}
+
+.contacto-item.instagram i {
+  color: #E1306C;
+}
+
+.contacto-item.instagram h3 {
+  color: #E1306C;
+}
+
+/* Colores oficiales de Facebook */
+.contacto-item.facebook {
+  border-color: rgba(66, 103, 178, 0.3);
+  background: rgba(66, 103, 178, 0.05);
+}
+
+.contacto-item.facebook:hover {
+  border-color: rgba(66, 103, 178, 0.6);
+  background: rgba(66, 103, 178, 0.1);
+}
+
+.contacto-item.facebook i {
+  color: #4267B2;
+}
+
+.contacto-item.facebook h3 {
+  color: #4267B2;
+}
+
+.contacto-item i {
+  font-size: 2rem;
+  color: #ffd700;
+  min-width: 50px;
+  text-align: center;
+}
+
+.contacto-item h3 {
+  color: #ffd700;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.contacto-item p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.contacto-item small {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.contacto-item a {
   color: #ffd700;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  padding: 10px 20px;
-  border-radius: 25px;
-  background: rgba(255, 215, 0, 0.1);
-  margin: 0 10px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 0;
+  background: none;
+  border: none;
+  margin: 0;
 }
 
-.contacto a:hover {
-  background: rgba(255, 215, 0, 0.2);
-  transform: translateY(-2px);
-  border-color: rgba(255, 215, 0, 0.6);
+.contacto-item a:hover {
+  color: white;
+  background: none;
+  transform: none;
+  border: none;
+}
+
+.contacto-details {
+  text-align: left;
+}
+
+.contacto-details h3 {
+  color: #ffd700;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.detail-item i {
+  font-size: 1.5rem;
+  color: #ffd700;
+  min-width: 30px;
+  text-align: center;
+}
+
+.detail-item h4 {
+  color: #ffd700;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.detail-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #cccccc;
 }
 
 /* Separadores de sección */
@@ -785,111 +1016,127 @@ body {
 @media (max-width: 768px) {
   /* Header responsive */
   .header {
-    padding: 8px 15px;
-    flex-direction: row;
-    gap: 15px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.9);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    padding: 15px 20px;
   }
   
-  .logo {
-    height: 50px;
+  .header-container {
+    position: relative;
+    padding: 0 15px;
   }
   
+  /* Mostrar menú hamburguesa */
+  .hamburger-menu {
+    display: flex;
+  }
+  
+  /* Ocultar navegación por defecto en móviles */
   .nav {
-    gap: 10px;
-    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    backdrop-filter: blur(20px);
+    border-left: 2px solid rgba(255, 215, 0, 0.3);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: auto;
+    align-items: center;
+    gap: 30px;
+    transition: right 0.3s ease;
+    z-index: 1001;
+  }
+  
+  .nav.active {
+    right: 0;
   }
   
   .nav a {
-    font-size: 0.85rem;
-    padding: 8px 15px;
+    font-size: 1.2rem;
+    padding: 15px 30px;
     background: rgba(255, 215, 0, 0.1);
-    border-radius: 20px;
+    border-radius: 25px;
     border: 1px solid rgba(255, 215, 0, 0.3);
+    width: 80%;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .nav a:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
   }
   
   .cart-icon {
-    position: relative;
-    top: auto;
-    right: auto;
     background: rgba(255, 215, 0, 0.2);
-    padding: 8px;
+    padding: 10px;
     border-radius: 50%;
-    font-size: 1.1rem;
   }
   
   /* Hero responsive */
   .hero {
-    padding: 80px 15px 60px;
+    padding: 140px 20px 80px;
     text-align: center;
     min-height: 100vh;
-    margin-top: 70px;
   }
   
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   
   .hero p {
-    font-size: 0.95rem;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
   }
   
   .hero-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
   }
   
   .cta-button {
     width: 100%;
-    max-width: 280px;
-    padding: 12px 20px;
-    font-size: 0.9rem;
+    max-width: 300px;
+    padding: 18px 25px;
+    font-size: 1.1rem;
   }
   
   /* Productos responsive */
   .galeria {
-    padding: 40px 15px;
+    padding: 60px 20px;
     min-height: auto;
   }
   
   .galeria h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
   }
   
   .galeria-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 25px;
+    font-size: 1rem;
+    margin-bottom: 40px;
   }
   
   .productos-container {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 5px;
+    gap: 30px;
+    padding: 0 10px;
   }
   
   .producto {
-    padding: 20px 15px;
+    padding: 30px 20px;
     margin: 0;
-    border-radius: 15px;
+    border-radius: 20px;
   }
   
   .producto img {
-    height: 180px;
-    border-radius: 10px;
-    object-fit: cover;
+    height: 220px;
+    border-radius: 15px;
   }
   
   .producto h3 {
@@ -962,11 +1209,44 @@ body {
     max-width: 100%;
   }
   
-  .contacto a {
-    display: block;
-    margin: 15px 0;
-    padding: 15px 25px;
+  /* Contacto responsive */
+  .contacto-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 10px;
+  }
+  
+  .contacto-item {
+    padding: 20px;
+    gap: 15px;
+  }
+  
+  .contacto-item i {
+    font-size: 1.5rem;
+    min-width: 40px;
+  }
+  
+  .contacto-item h3 {
+    font-size: 1.1rem;
+  }
+  
+  .contacto-item p {
     font-size: 1rem;
+  }
+  
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .detail-item {
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .detail-item i {
+    font-size: 1.3rem;
+    min-width: 25px;
   }
   
   /* Footer responsive */

@@ -50,16 +50,16 @@ function smoothScroll() {
   });
 }
 
-// Efecto parallax en scroll
+// Efecto parallax en scroll (solo para hero)
 function parallaxEffect() {
   window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero, .producto');
+    const heroElement = document.querySelector('.hero');
     
-    parallaxElements.forEach(element => {
-      const speed = 0.5;
-      element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
+    if (heroElement) {
+      const speed = 0.3; // Reducido para ser más sutil
+      heroElement.style.transform = `translateY(${scrolled * speed}px)`;
+    }
   });
 }
 
@@ -70,15 +70,20 @@ function scrollAnimation() {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
+        // Una vez que aparece, ya no necesitamos observar
+        observer.unobserve(entry.target);
       }
     });
+  }, {
+    threshold: 0.1, // Se activa cuando el 10% del elemento es visible
+    rootMargin: '0px 0px -50px 0px' // Se activa un poco antes
   });
 
   const elements = document.querySelectorAll('.producto, .nosotros, .contacto');
   elements.forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(50px)';
-    el.style.transition = 'all 0.6s ease';
+    el.style.transform = 'translateY(30px)'; // Reducido de 50px a 30px
+    el.style.transition = 'all 0.5s ease'; // Reducido de 0.6s a 0.5s
     observer.observe(el);
   });
 }
@@ -158,8 +163,10 @@ document.addEventListener('DOMContentLoaded', function() {
   smoothScroll();
   parallaxEffect();
   scrollAnimation();
-  customCursor();
+  // customCursor(); // Desactivado temporalmente para mejor performance
   addRippleEffect();
+  initHamburgerMenu();
+  loadCartFromStorage();
   
   // Efecto de escritura en el título principal
   const heroTitle = document.querySelector('.hero h1');
@@ -182,6 +189,52 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(price);
   });
 });
+
+// Función para el menú hamburguesa
+function initHamburgerMenu() {
+  const hamburger = document.getElementById('hamburgerMenu');
+  const nav = document.getElementById('navMenu');
+  
+  function toggleMenu() {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+  }
+  
+  hamburger.addEventListener('click', toggleMenu);
+  
+  // Soporte para teclado
+  hamburger.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+  
+  // Cerrar menú al hacer clic en un enlace
+  const navLinks = nav.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+    });
+  });
+  
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+    }
+  });
+  
+  // Cerrar menú con Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      nav.classList.remove('active');
+    }
+  });
+}
 
 // Animación de contador para precios
 function animateCounter(element) {
@@ -207,6 +260,28 @@ function animateCounter(element) {
 // Variables globales para el carrito
 let cart = [];
 let cartTotal = 0;
+
+// Funciones para localStorage
+function saveCartToStorage() {
+  try {
+    localStorage.setItem('velasElenaCart', JSON.stringify(cart));
+  } catch (e) {
+    console.log('Error al guardar carrito:', e);
+  }
+}
+
+function loadCartFromStorage() {
+  try {
+    const savedCart = localStorage.getItem('velasElenaCart');
+    if (savedCart) {
+      cart = JSON.parse(savedCart);
+      updateCart();
+    }
+  } catch (e) {
+    console.log('Error al cargar carrito:', e);
+    cart = [];
+  }
+}
 
 // Función para scroll a secciones
 function scrollToSection(sectionId) {
@@ -243,6 +318,16 @@ function toggleCart() {
   }
 }
 
+// Agregar soporte para teclado en el carrito
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const cartSidebar = document.getElementById('cartSidebar');
+    if (cartSidebar && cartSidebar.classList.contains('open')) {
+      toggleCart();
+    }
+  }
+});
+
 function agregarCarrito(nombre) {
   // Buscar el producto en la lista
   const productos = {
@@ -276,9 +361,10 @@ function agregarCarrito(nombre) {
   
   // Actualizar carrito
   updateCart();
+  saveCartToStorage();
   
   // Mostrar notificación
-  showNotification(`🛒 ¡"${nombre}" añadido al carrito!`);
+  showNotification(`¡"${nombre}" añadido!`);
   
   // Efecto de vibración en el botón
   const button = event.target;
@@ -338,12 +424,14 @@ function changeQuantity(index, change) {
   } else {
     item.cantidad = newQuantity;
     updateCart();
+    saveCartToStorage();
   }
 }
 
 function removeItem(index) {
   cart.splice(index, 1);
   updateCart();
+  saveCartToStorage();
 }
 
 function checkout() {
@@ -373,8 +461,8 @@ function checkout() {
   
   // Codificar el mensaje para WhatsApp
   const mensajeCodificado = encodeURIComponent(mensaje);
-  const numeroWhatsApp = '573008220389';
-  const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
+  const numeroWhatsApp = '573008220389'; // WhatsApp principal
+  const urlWhatsApp = `https://api.whatsapp.com/send/?phone=${numeroWhatsApp}&text=${mensajeCodificado}&type=phone_number&app_absent=0`;
   
   // Abrir WhatsApp en nueva pestaña
   window.open(urlWhatsApp, '_blank');
@@ -386,6 +474,7 @@ function checkout() {
   setTimeout(() => {
     cart = [];
     updateCart();
+    saveCartToStorage();
     toggleCart();
   }, 2000);
 }
@@ -396,36 +485,50 @@ function showNotification(message) {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: linear-gradient(45deg, #4CAF50, #45a049);
+    background: linear-gradient(45deg, #25D366, #128C7E);
     color: white;
-    padding: 15px 25px;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     z-index: 10000;
     transform: translateX(400px);
-    transition: transform 0.2s ease;
+    transition: transform 0.15s ease;
     font-weight: 600;
-    font-size: 1rem;
-    max-width: 300px;
+    font-size: 0.9rem;
+    max-width: 280px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
   `;
-  notification.innerHTML = message;
+  notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message} <i class="fas fa-times" style="margin-left: auto; opacity: 0.7;"></i>`;
+  
+  // Permitir cerrar la notificación haciendo clic
+  notification.addEventListener('click', () => {
+    notification.style.transform = 'translateX(400px)';
+    setTimeout(() => {
+      if (document.body.contains(notification)) {
+        document.body.removeChild(notification);
+      }
+    }, 150);
+  });
   
   document.body.appendChild(notification);
   
-  // Animación de entrada más rápida
-  setTimeout(() => {
+  // Animación de entrada instantánea
+  requestAnimationFrame(() => {
     notification.style.transform = 'translateX(0)';
-  }, 50);
+  });
   
-  // Animación de salida más rápida (1.5 segundos en lugar de 3)
+  // Animación de salida más rápida (0.8 segundos)
   setTimeout(() => {
     notification.style.transform = 'translateX(400px)';
     setTimeout(() => {
       if (document.body.contains(notification)) {
         document.body.removeChild(notification);
       }
-    }, 200);
-  }, 1500);
+    }, 150);
+  }, 800);
 }
 
 // Agregar animación de ripple al CSS
