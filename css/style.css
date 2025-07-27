@@ -480,12 +480,13 @@ body {
   padding: 100px 40px;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   position: relative;
+  min-height: 100vh;
 }
 
 .galeria h2 {
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   background: linear-gradient(45deg, #ffd700, #daa520);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -493,61 +494,85 @@ body {
   animation: fadeInUp 0.8s ease;
 }
 
+.galeria-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
 .productos-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 50px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .producto {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  border-radius: 20px;
-  padding: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 25px;
+  padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  transition: all 0.4s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
 }
 
-.producto::before {
-  content: '';
+.producto-badge {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  transition: left 0.5s;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(45deg, #ffd700, #daa520);
+  color: #000;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+  z-index: 10;
 }
 
-.producto:hover::before {
-  left: 100%;
+.producto-descripcion {
+  color: #cccccc;
+  font-size: 0.95rem;
+  margin: 10px 0 15px;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 .producto:hover {
-  transform: translateY(-15px) scale(1.05);
-  box-shadow: 0 30px 60px rgba(255, 215, 0, 0.3);
-  animation: glow 2s ease-in-out infinite;
-  border-color: rgba(255, 215, 0, 0.6);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.8);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .producto img {
   width: 100%;
-  height: 250px;
+  height: 280px;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 20px;
+  border-radius: 20px;
+  margin-bottom: 25px;
   transition: transform 0.3s ease;
+  border: 2px solid rgba(255, 215, 0, 0.2);
 }
 
 .producto:hover img {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  border-color: rgba(255, 215, 0, 0.5);
 }
 
 .producto h3 {
@@ -570,38 +595,26 @@ body {
 }
 
 .producto button {
-  margin-top: 20px;
-  padding: 15px 30px;
+  margin-top: 25px;
+  padding: 18px 35px;
   background: linear-gradient(45deg, #ffd700, #daa520);
   color: #000;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.producto button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.5s;
-}
-
-.producto button:hover::before {
-  left: 100%;
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .producto button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
   background: linear-gradient(45deg, #daa520, #ffd700);
 }
 
@@ -865,22 +878,11 @@ body {
   }
 }
 
-/* Efectos de partículas flotantes */
+/* Efectos de partículas flotantes - DESACTIVADAS */
 .floating-particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  animation: float 6s ease-in-out infinite;
+  display: none;
 } 
