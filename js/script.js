@@ -170,23 +170,57 @@ function checkout() {
     return;
   }
   
-  let message = `🕯️ *PEDIDO - ELENA VELAS Y AROMAS* 🕯️\n\n`;
-  message += `*Hola! Quiero hacer el siguiente pedido:*\n\n`;
+  let message = '🕯️ *VELAS Y AROMAS ELENA - PEDIDO*\n';
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  message += '👋 *¡Hola! Quiero hacer un pedido:*\n\n';
+  message += '📋 *DETALLE DEL PEDIDO:*\n';
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
   
+  let total = 0;
+  let itemCount = 0;
   cart.forEach((item, index) => {
+    itemCount += item.quantity;
     const subtotal = item.price * item.quantity;
-    message += `*${index + 1}. ${item.name}*\n`;
-    message += `   Cantidad: ${item.quantity}\n`;
-    message += `   Precio: $${item.price.toLocaleString()} COP\n`;
-    message += `   Subtotal: $${subtotal.toLocaleString()} COP\n\n`;
+    total += subtotal;
+    message += `• *${item.name}*\n`;
+    message += `  └ Cantidad: ${item.quantity} unidad(es)\n`;
+    message += `  └ Precio: $${item.price.toLocaleString()} COP c/u\n`;
+    message += `  └ Subtotal: $${subtotal.toLocaleString()} COP\n\n`;
   });
   
-  message += `*TOTAL DEL PEDIDO: $${cartTotal.toLocaleString()} COP*\n\n`;
-  message += `📱 *Información de contacto:*\n`;
-  message += `   Nombre: _________________\n`;
-  message += `   Dirección: _________________\n`;
-  message += `   Teléfono: _________________\n\n`;
-  message += `✨ *¡Gracias por elegir nuestras velas artesanales!* ✨`;
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  message += `📦 *Total de productos: ${itemCount}*\n`;
+  message += `💰 *TOTAL A PAGAR: $${total.toLocaleString()} COP*\n`;
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  
+  message += '📞 *INFORMACIÓN DE CONTACTO:*\n';
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  message += '• WhatsApp Principal: +57 300 822 0389\n';
+  message += '• WhatsApp Secundario: +57 324 644 5897\n';
+  message += '• Instagram: @velasyaromaselena\n';
+  message += '• Facebook: Velas y Aromas Cautiva\n\n';
+  
+  message += '🚚 *INFORMACIÓN DE ENVÍO:*\n';
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  message += '• Bogotá: 1-2 días hábiles\n';
+  message += '• Resto de Colombia: 3-5 días hábiles\n';
+  message += '• Envío gratis en compras > $100.000\n\n';
+  
+  message += '⏰ *HORARIOS DE ATENCIÓN:*\n';
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  message += '• Lunes a Viernes: 9:00 AM - 6:00 PM\n';
+  message += '• Sábados: 9:00 AM - 2:00 PM\n';
+  message += '• Respuesta WhatsApp: Inmediata\n\n';
+  
+  message += '💳 *MÉTODOS DE PAGO:*\n';
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  message += '• Transferencia bancaria\n';
+  message += '• Contra entrega (Bogotá)\n';
+  message += '• Pago en efectivo\n\n';
+  
+  message += '🌟 *¡Gracias por elegir nuestras velas artesanales!*\n';
+  message += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  message += '✨ *Cada vela está hecha con amor y dedicación* ✨';
   
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=573008220389&text=${encodedMessage}&type=phone_number&app_absent=0`;
