@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Velas y Aromas Elena - Velas Artesanales y Aromaterapia en Colombia</title>
+  <meta name="description" content="Descubre nuestras velas artesanales hechas con cera natural y aceites esenciales premium. Aromaterapia de calidad en Colombia. Envíos a todo el país." />
+  <meta name="keywords" content="velas artesanales, aromaterapia, velas aromáticas, cera natural, aceites esenciales, Colombia, Elena" />
+  <meta name="author" content="Velas y Aromas Elena" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Velas y Aromas Elena - Velas Artesanales" />
+  <meta property="og:description" content="Velas artesanales con cera natural y aceites esenciales premium. Aromaterapia de calidad." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://velasyaromaselena.com" />
+  <meta property="og:image" content="https://velasyaromaselena.com/assets/hero-bg.jpg" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#25D366',
+            secondary: '#128C7E',
+            accent: '#E1306C',
+            facebook: '#4267B2',
+            dark: '#0a0a0a',
+            gold: '#ffd700'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s infinite'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    }
+    
+    .product-card {
+      transition: all 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(37, 211, 102, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-dark text-white">
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 glass-effect border-b border-primary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo/Brand -->
+        <div class="text-2xl font-bold text-gold">
+          Velas y Aromas Elena
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#inicio" class="text-white hover:text-primary transition-colors duration-300">Inicio</a>
+          <a href="#productos" class="text-white hover:text-primary transition-colors duration-300">Productos</a>
+          <a href="#nosotros" class="text-white hover:text-primary transition-colors duration-300">Nosotros</a>
+          <a href="#contacto" class="text-white hover:text-primary transition-colors duration-300">Contacto</a>
+        </nav>
+        
+        <!-- Cart Icon -->
+        <div class="flex items-center space-x-4">
+          <button id="cartBtn" class="relative p-2 text-primary hover:text-white transition-colors duration-300">
+            <i class="fas fa-shopping-cart text-xl"></i>
+            <span id="cartCount" class="absolute -top-1 -right-1 bg-primary text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="md:hidden text-white">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden glass-effect border-t border-primary/30">
+      <div class="px-4 py-4 space-y-4">
+        <a href="#inicio" class="block text-white hover:text-primary transition-colors duration-300">Inicio</a>
+        <a href="#productos" class="block text-white hover:text-primary transition-colors duration-300">Productos</a>
+        <a href="#nosotros" class="block text-white hover:text-primary transition-colors duration-300">Nosotros</a>
+        <a href="#contacto" class="block text-white hover:text-primary transition-colors duration-300">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="fixed top-0 right-0 h-full w-80 bg-dark border-l border-primary/30 transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-primary">Carrito de Compras</h3>
+        <button id="closeCart" class="text-white hover:text-primary transition-colors duration-300">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <div id="cartItems" class="space-y-4 mb-6">
+        <!-- Cart items will be added here -->
+      </div>
+      
+      <div class="border-t border-primary/30 pt-4">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-lg font-semibold">Total:</span>
+          <span id="cartTotal" class="text-xl font-bold text-primary">$0 COP</span>
+        </div>
+        <button id="checkoutBtn" class="w-full bg-primary text-black font-bold py-3 px-6 rounded-lg hover:bg-secondary transition-colors duration-300">
+          <i class="fab fa-whatsapp mr-2"></i>Enviar Pedido por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10"></div>
+      <div class="relative z-10 text-center px-4">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+          Descubre el Arte de la
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-gold">Aromaterapia</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-gray-300 animate-slide-up">
+          Velas artesanales y fragancias naturales ✨
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+          <button onclick="scrollToSection('productos')" class="bg-primary text-black font-bold py-4 px-8 rounded-full hover:bg-secondary transition-colors duration-300">
+            <i class="fas fa-shopping-cart mr-2"></i>Ver Productos
+          </button>
+          <button onclick="scrollToSection('nosotros')" class="border-2 border-primary text-primary font-bold py-4 px-8 rounded-full hover:bg-primary hover:text-black transition-colors duration-300">
+            <i class="fas fa-info-circle mr-2"></i>Conoce Más
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-20 gradient-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-6xl font-bold mb-4">
+            ✨ Nuestras Velas Artesanales ✨
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Descubre nuestra colección de velas aromáticas hechas con cera natural y aceites esenciales premium
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Product Card 1 -->
+          <div class="product-card bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-primary/20">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-primary text-black px-3 py-1 rounded-full text-sm font-bold">
+                🔥 Más Vendida
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl mb-4 flex items-center justify-center">
+                <i class="fas fa-fire text-6xl text-primary"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary">CEDRO VERBENA 6×6</h3>
+            <p class="text-gray-300 mb-4">Aroma relajante de cedro y verbena</p>
+            <p class="text-2xl font-bold mb-4">$32.900 COP</p>
+            <button onclick="addToCart('Cedro Verbena 6×6', 32900)" class="w-full bg-primary text-black font-bold py-3 px-6 rounded-lg hover:bg-secondary transition-colors duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="product-card bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-primary/20">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">
+                ✨ Nueva
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-accent/20 to-pink-500/20 rounded-xl mb-4 flex items-center justify-center">
+                <i class="fas fa-star text-6xl text-accent"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary">TILO BAMBOO 6×6</h3>
+            <p class="text-gray-300 mb-4">Fragancia suave de tilo y bambú</p>
+            <p class="text-2xl font-bold mb-4">$32.900 COP</p>
+            <button onclick="addToCart('Tilo Bamboo 6×6', 32900)" class="w-full bg-primary text-black font-bold py-3 px-6 rounded-lg hover:bg-secondary transition-colors duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="product-card bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-primary/20">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-gold text-black px-3 py-1 rounded-full text-sm font-bold">
+                💎 Oferta
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-gold/20 to-yellow-500/20 rounded-xl mb-4 flex items-center justify-center">
+                <i class="fas fa-gem text-6xl text-gold"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary">CEDRO VERBENA 6×10</h3>
+            <p class="text-gray-300 mb-4">Versión grande con mayor duración</p>
+            <p class="text-2xl font-bold mb-4">
+              <span class="line-through text-gray-500">$44.900</span> $39.900 COP
+            </p>
+            <button onclick="addToCart('Cedro Verbena 6×10', 39900)" class="w-full bg-primary text-black font-bold py-3 px-6 rounded-lg hover:bg-secondary transition-colors duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-20 gradient-bg">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-6xl font-bold mb-8">Sobre Nosotros</h2>
+        <p class="text-xl text-gray-300 leading-relaxed">
+          Elena diseña cada vela artesanalmente usando cera natural y aceites esenciales premium 🌿
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 gradient-bg">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl md:text-6xl font-bold text-center mb-16">Contáctanos</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-primary/20">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                  <i class="fab fa-whatsapp text-xl text-black"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-primary">WhatsApp Principal</h3>
+                  <a href="https://api.whatsapp.com/send/?phone=573008220389&text&type=phone_number&app_absent=0" target="_blank" class="text-white hover:text-primary transition-colors duration-300">+57 300 822 0389</a>
+                  <p class="text-sm text-gray-400">Respuesta inmediata</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-secondary/20">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+                  <i class="fab fa-whatsapp text-xl text-black"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-secondary">WhatsApp Secundario</h3>
+                  <a href="https://api.whatsapp.com/send/?phone=573246445897&text&type=phone_number&app_absent=0" target="_blank" class="text-white hover:text-secondary transition-colors duration-300">+57 324 644 5897</a>
+                  <p class="text-sm text-gray-400">Respuesta en minutos</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-accent/20">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                  <i class="fab fa-instagram text-xl text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-accent">Instagram</h3>
+                  <a href="https://www.instagram.com/velasyaromaselena" target="_blank" class="text-white hover:text-accent transition-colors duration-300">@velasyaromaselena</a>
+                  <p class="text-sm text-gray-400">Nuevos productos y ofertas</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-facebook/20">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-facebook rounded-full flex items-center justify-center">
+                  <i class="fab fa-facebook text-xl text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-facebook">Facebook</h3>
+                  <a href="https://web.facebook.com/velasyaromascautiva/?_rdc=1&_rdr#" target="_blank" class="text-white hover:text-facebook transition-colors duration-300">@velasyaromascautiva</a>
+                  <p class="text-sm text-gray-400">Comunidad y eventos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Info -->
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-primary/20">
+            <h3 class="text-2xl font-bold mb-6 text-primary">Información Adicional</h3>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-shipping-fast text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold">Envíos</h4>
+                  <p class="text-gray-300">A todo Colombia</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-clock text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold">Horarios</h4>
+                  <p class="text-gray-300">Lun - Sáb: 9AM - 6PM</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-shield-alt text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold">Garantía</h4>
+                  <p class="text-gray-300">100% satisfacción</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-credit-card text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold">Pagos</h4>
+                  <p class="text-gray-300">Contra entrega / Transferencia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black py-8 border-t border-primary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-primary">© 2025 Velas y Aromas Elena</p>
+    </div>
+  </footer>
+
+  <!-- Chatbot Widget -->
+  <div id="chatbotWidget" class="fixed bottom-6 right-6 z-50">
+    <button id="chatbotToggle" class="bg-primary text-black p-4 rounded-full shadow-lg hover:bg-secondary transition-colors duration-300">
+      <i class="fas fa-comments text-2xl"></i>
+    </button>
+    
+    <div id="chatbotPanel" class="hidden absolute bottom-16 right-0 w-80 bg-dark border border-primary/30 rounded-lg shadow-xl">
+      <div class="p-4 border-b border-primary/30">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-bold text-primary">Asistente Virtual</h3>
+          <button id="closeChatbot" class="text-white hover:text-primary">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-4">
+        <div class="bg-primary/20 rounded-lg p-3">
+          <p class="text-sm">¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte hoy?</p>
+        </div>
+      </div>
+      
+      <div class="p-4 border-t border-primary/30">
+        <div class="flex space-x-2">
+          <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." class="flex-1 bg-white/10 border border-primary/30 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-primary">
+          <button id="sendMessage" class="bg-primary text-black px-4 py-2 rounded-lg hover:bg-secondary transition-colors duration-300">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/tailwind-script.js"></script>
+</body>
+</html> 
