@@ -439,16 +439,46 @@ function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
   if (section) {
     // Cerrar menú móvil si está abierto
-    closeMobileMenu();
+    if (typeof closeMobileMenu === 'function') {
+      closeMobileMenu();
+    }
     
     // Scroll suave con offset para el header
-    const headerHeight = document.querySelector('header').offsetHeight;
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 0;
     const targetPosition = section.offsetTop - headerHeight - 20;
     
+    // Asegurar que la posición no sea negativa
+    const finalPosition = Math.max(0, targetPosition);
+    
     window.scrollTo({
-      top: targetPosition,
+      top: finalPosition,
       behavior: 'smooth'
     });
+    
+    // Agregar clase activa al enlace
+    updateActiveNavLink(sectionId);
+    
+    console.log(`Navegando a: ${sectionId}`);
+  } else {
+    console.log(`Sección no encontrada: ${sectionId}`);
+  }
+}
+
+// Función para actualizar el enlace activo en la navegación
+function updateActiveNavLink(sectionId) {
+  // Remover clase activa de todos los enlaces
+  const navLinks = document.querySelectorAll('nav a');
+  navLinks.forEach(link => {
+    link.classList.remove('text-primary');
+    link.classList.add('text-white');
+  });
+  
+  // Agregar clase activa al enlace correspondiente
+  const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+  if (activeLink) {
+    activeLink.classList.remove('text-white');
+    activeLink.classList.add('text-primary');
   }
 }
 
@@ -457,9 +487,40 @@ function initializeSmoothScroll() {
   links.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      const targetId = this.getAttribute('href');
+      const targetId = this.getAttribute('href').substring(1); // Remover el #
       scrollToSection(targetId);
     });
+  });
+  
+  // Detectar sección activa al hacer scroll
+  window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      
+      if (window.pageYOffset >= (sectionTop - headerHeight - 100)) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    // Actualizar enlace activo
+    navLinks.forEach(link => {
+      link.classList.remove('text-primary');
+      link.classList.add('text-white');
+    });
+    
+    if (current) {
+      const activeLink = document.querySelector(`nav a[href="#${current}"]`);
+      if (activeLink) {
+        activeLink.classList.remove('text-white');
+        activeLink.classList.add('text-primary');
+      }
+    }
   });
 }
 
@@ -485,6 +546,7 @@ function initializeAnimations() {
 // Global functions for onclick handlers
 window.addToCart = addToCart;
 window.scrollToSection = scrollToSection;
+window.updateActiveNavLink = updateActiveNavLink;
 
 // Función para cerrar el menú móvil
 function closeMobileMenu() {
