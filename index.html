@@ -276,93 +276,7 @@
         border-radius: 1px;
       }
       
-      /* Logo de Empresa */
-      .company-logo {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 60;
-        display: none;
-      }
-      
-      @media (min-width: 1024px) {
-        .company-logo {
-          display: block;
-        }
-      }
-      
-      .logo-circle {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #B8860B 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 15px;
-        box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      
-      .logo-circle:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
-      }
-      
-      .flame-icon {
-        font-size: 20px;
-        margin-bottom: 3px;
-        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-      }
-      
-      .logo-text {
-        text-align: center;
-        margin-bottom: 5px;
-      }
-      
-      .elena-text {
-        font-family: 'Playfair Display', serif;
-        font-size: 16px;
-        font-weight: 700;
-        color: white;
-        line-height: 1;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-      }
-      
-      .velas-text {
-        font-size: 8px;
-        color: #2D1810;
-        font-weight: 600;
-        line-height: 1;
-        margin-top: 2px;
-      }
-      
-      .contact-info {
-        font-size: 6px;
-        color: #2D1810;
-        text-align: center;
-      }
-      
-      .contact-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 1px 0;
-        gap: 3px;
-      }
-      
-      .contact-item i {
-        font-size: 6px;
-        width: 8px;
-        text-align: center;
-      }
-      
-      .contact-item span {
-        font-size: 6px;
-        font-weight: 500;
-      }
+
     }
   </style>
 </head>
@@ -377,30 +291,7 @@
           <div class="text-sm text-warmGray font-normal">VELAS Y AROMAS</div>
         </div>
         
-        <!-- Logo de Empresa -->
-        <div class="company-logo">
-          <div class="logo-circle">
-            <div class="flame-icon">🕯️</div>
-            <div class="logo-text">
-              <div class="elena-text">Elena</div>
-              <div class="velas-text">VELAS Y AROMAS</div>
-            </div>
-            <div class="contact-info">
-              <div class="contact-item">
-                <i class="fab fa-instagram"></i>
-                <span>velasyaromaselena</span>
-              </div>
-              <div class="contact-item">
-                <i class="fab fa-facebook"></i>
-                <span>Velasyaromaselena</span>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>3246445897</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        
         
         <!-- Navigation -->
         <nav class="hidden md:flex space-x-8">
