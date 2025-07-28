@@ -29,7 +29,7 @@ const chatbotResponses = {
   ],
   contact: [
     "📱 *Contacto directo:*\n• WhatsApp Principal: +57 300 822 0389\n• WhatsApp Secundario: +57 324 644 5897\n• Instagram: @velasyaromaselena\n• Facebook: @velasyaromascautiva",
-    "🕐 *Horarios de atención:*\n• Lunes a Sábado: 9AM - 6PM\n• Respuesta WhatsApp: Inmediata\n• Respuesta redes: En minutos\n\n¿En qué horario prefieres contactarnos?",
+          "🕐 *Horarios de atención:*\n• Lunes a Viernes: 9AM - 6PM\n• Respuesta WhatsApp: Inmediata\n• Respuesta redes: En minutos\n\n¿En qué horario prefieres contactarnos?",
     "💬 *Canales de contacto:*\n• WhatsApp: Respuesta inmediata\n• Instagram: Nuevos productos y ofertas\n• Facebook: Comunidad y eventos\n\n¿Por cuál canal te sientes más cómodo?"
   ],
   recommendations: [
@@ -302,29 +302,61 @@ function initializeChatbot() {
   function generateChatbotResponse(message) {
     const lowerMessage = message.toLowerCase();
     
-    // Saludos
+    // Contexto de conversación
+    if (!window.chatContext) {
+      window.chatContext = {
+        lastTopic: '',
+        userPreferences: [],
+        conversationHistory: [],
+        userName: '',
+        userLocation: ''
+      };
+    }
+    
+    // Agregar mensaje al historial
+    window.chatContext.conversationHistory.push({
+      message: message,
+      timestamp: new Date()
+    });
+    
+    // Mantener solo los últimos 10 mensajes
+    if (window.chatContext.conversationHistory.length > 10) {
+      window.chatContext.conversationHistory.shift();
+    }
+    
+    // Saludos con personalización
     if (lowerMessage.includes('hola') || lowerMessage.includes('buenos') || lowerMessage.includes('buenas') || lowerMessage.includes('hey')) {
-      return getRandomResponse('greetings');
+      const time = new Date().getHours();
+      let greeting = '';
+      if (time < 12) greeting = '¡Buenos días!';
+      else if (time < 18) greeting = '¡Buenas tardes!';
+      else greeting = '¡Buenas noches!';
+      
+      return `${greeting} Soy Elena, tu asistente virtual especializada en velas artesanales. 🌟\n\n¿En qué puedo ayudarte hoy?\n\n• 🕯️ Ver productos\n• 💰 Consultar precios\n• 🚚 Información de envíos\n• 📞 Contacto directo\n• 🎁 Recomendaciones personalizadas`;
     }
     
-    // Productos
+    // Productos con recomendaciones inteligentes
     if (lowerMessage.includes('producto') || lowerMessage.includes('vela') || lowerMessage.includes('velas') || lowerMessage.includes('catalogo') || lowerMessage.includes('que tienen')) {
-      return getRandomResponse('products');
+      window.chatContext.lastTopic = 'productos';
+      return "🕯️ *Nuestros Catálogos Especializados:*\n\n**🔥 Productos Principales:**\n• Cedro Verbena - Refrescante y natural\n• Tilo Bamboo - Relajante y calmante\n• Lavanda - Para dormir y reducir estrés\n\n**💕 Amor y Amistad:**\n• Corazón - Especial San Valentín\n• Rosa Aromática - Romántica y elegante\n• Vainilla Acariciante - Dulce y acogedora\n\n**🎄 Navidad:**\n• Pino Navideño - Fresco y festivo\n• Especias Navideñas - Mágico y cálido\n\n**✝️ Primera Comunión:**\n• Blanca Sagrada - Ceremonial y pura\n• Incienso Sagrado - Espiritual y divino\n\n¿Qué tipo de vela te interesa más? Puedo darte recomendaciones personalizadas según tus necesidades.";
     }
     
-    // Precios
+    // Precios con comparaciones
     if (lowerMessage.includes('precio') || lowerMessage.includes('costo') || lowerMessage.includes('cuanto') || lowerMessage.includes('vale') || lowerMessage.includes('oferta') || lowerMessage.includes('descuento')) {
-      return getRandomResponse('prices');
+      window.chatContext.lastTopic = 'precios';
+      return "💰 *Información de Precios:*\n\n**📊 Rango de Precios:**\n• Detalle: $15.900 - $49.900\n• Mayorista: $12.000 - $45.000\n\n**💡 Ofertas Especiales:**\n• Compras > $100.000: Envío gratis\n• Compras > $200.000: 5% descuento\n• Compras > $500.000: 10% descuento\n\n**🎯 Recomendación:**\nSi compras para regalar o decorar, te recomiendo empezar con velas de $25.000 - $35.000.\n\n¿Tienes un presupuesto específico en mente?";
     }
     
-    // Envíos
+    // Envíos detallados
     if (lowerMessage.includes('envío') || lowerMessage.includes('entrega') || lowerMessage.includes('llegar') || lowerMessage.includes('tiempo') || lowerMessage.includes('cuando llega') || lowerMessage.includes('envian')) {
-      return getRandomResponse('shipping');
+      window.chatContext.lastTopic = 'envios';
+      return "🚚 *Información de Envíos:*\n\n**📍 Bogotá:**\n• Tiempo: 1-2 días hábiles\n• Costo: Gratis en compras > $100.000\n• Opciones: Contra entrega, transferencia\n\n**🌍 Resto de Colombia:**\n• Tiempo: 3-5 días hábiles\n• Costo: $8.000 - $15.000\n• Opciones: Servientrega, Interrapidisimo\n\n**⚡ Envío Express:**\n• Tiempo: 24 horas (Bogotá)\n• Costo: $5.000 adicional\n\n**📦 Empaque:**\n• Cajas especiales anti-golpes\n• Papel de burbujas\n• Sellado profesional\n\n¿De dónde eres? Te puedo dar información específica.";
     }
     
-    // Contacto
+    // Contacto con múltiples opciones
     if (lowerMessage.includes('contacto') || lowerMessage.includes('whatsapp') || lowerMessage.includes('teléfono') || lowerMessage.includes('numero') || lowerMessage.includes('hablar') || lowerMessage.includes('contactar')) {
-      return getRandomResponse('contact');
+      window.chatContext.lastTopic = 'contacto';
+      return "📞 *Canales de Contacto:*\n\n**💬 WhatsApp Principal:**\n• +57 300 822 0389\n• Atención rápida 24/7\n• Respuesta en 5-10 minutos\n\n**📱 WhatsApp Secundario:**\n• +57 324 644 5897\n• Soporte adicional\n• Consultas técnicas\n\n**📘 Facebook:**\n• Velas y Aromas Cautiva\n• Fotos de productos\n• Reseñas de clientes\n\n**📸 Instagram:**\n• @velasyaromaselena\n• Stories diarios\n• Nuevos productos\n\n**⏰ Horarios:**\n• Lunes a Viernes: 9:00 AM - 6:00 PM\n• Sábados: 9:00 AM - 2:00 PM\n\n¿Por cuál canal prefieres contactarnos?";
     }
     
     // Recomendaciones
@@ -398,11 +430,24 @@ function initializeChatbot() {
     }
     
     if (lowerMessage.includes('bogota') || lowerMessage.includes('bogotá')) {
-      return "🏙️ *Envíos en Bogotá:*\n• Tiempo: 1-2 días hábiles\n• Costo: Gratis en compras > $100.000\n• Opciones: Contra entrega o transferencia\n\n¿Quieres hacer tu pedido?";
+      return "🏙️ *Envíos en Bogotá - ¡Los Más Rápidos!*:\n\n**⚡ Tiempo de Entrega:**\n• 1-2 días hábiles\n• Envío express: 24 horas\n\n**💰 Costos:**\n• Gratis en compras > $100.000\n• $5.000 en compras menores\n• Express: +$5.000 adicional\n\n**🚚 Opciones de Entrega:**\n• Contra entrega (pago en efectivo)\n• Transferencia bancaria\n• Punto de encuentro\n\n**📍 Zonas de Cobertura:**\n• Toda Bogotá y alrededores\n• Chía, Cajicá, La Calera\n\n¿En qué zona de Bogotá estás? Te puedo dar información más específica.";
     }
     
-    // Default response
-    return getRandomResponse('default');
+    // Respuesta inteligente para preguntas no reconocidas
+    if (lowerMessage.includes('no entiendo') || lowerMessage.includes('no se') || lowerMessage.includes('ayuda')) {
+      return "🤔 *Entiendo tu confusión. Te ayudo:*\n\n**🎯 ¿Qué quieres hacer?**\n\n• 🕯️ **Ver productos** - Te muestro nuestros catálogos\n• 💰 **Saber precios** - Te doy información de costos\n• 🚚 **Envíos** - Te explico tiempos y costos\n• 📞 **Contacto** - Te doy nuestros números\n• 🎁 **Recomendaciones** - Te sugiero productos\n• 🛒 **Hacer pedido** - Te guío en el proceso\n\n**💡 También puedes escribir:**\n• 'Quiero una vela para dormir'\n• 'Necesito algo para regalar'\n• '¿Cuánto cuesta la vela de lavanda?'\n\n¿Cuál de estas opciones te interesa?";
+    }
+    
+    // Respuesta por defecto más inteligente
+    const responses = [
+      "🤔 *Interesante pregunta. Déjame ayudarte:*\n\n¿Te refieres a nuestros productos, precios, envíos o contacto? Puedo darte información específica sobre cualquier tema.",
+      
+      "💭 *No estoy seguro de lo que necesitas. Te sugiero:*\n\n• Escribir 'productos' para ver catálogos\n• Escribir 'precios' para información de costos\n• Escribir 'envíos' para tiempos de entrega\n• Escribir 'contacto' para nuestros números\n\n¿Cuál te interesa más?",
+      
+      "🌟 *¡Hola! Soy Elena, tu asistente especializada en velas artesanales.*\n\nPuedo ayudarte con:\n• 🕯️ Catálogos de productos\n• 💰 Información de precios\n• 🚚 Envíos y tiempos\n• 📞 Contacto directo\n• 🎁 Recomendaciones\n\n¿En qué puedo ayudarte hoy?"
+    ];
+    
+    return responses[Math.floor(Math.random() * responses.length)];
   }
   
   function getRandomResponse(category) {
