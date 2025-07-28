@@ -211,53 +211,28 @@
         border-radius: 0.5rem;
       }
       
-      /* Mejorar separación de tarjetas de productos en móviles */
+      /* Simplificar tarjetas de productos */
       .product-card {
-        margin-bottom: 2rem;
-        padding: 1.5rem;
-      }
-      
-      .product-card .bg-warmGray\/10 {
-        margin-top: 1rem;
+        margin-bottom: 1.5rem;
         padding: 1rem;
-        background: rgba(212, 175, 55, 0.1) !important;
-        border-radius: 0.5rem;
       }
       
-      /* Mejorar espaciado entre secciones */
-      .section-divider {
-        height: 3rem;
-        background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%, rgba(212, 175, 55, 0.1) 100%);
-        margin: 2rem 0;
+      /* Ocultar información detallada en móviles */
+      @media (max-width: 768px) {
+        .product-card .bg-warmGray\/10 {
+          display: none;
+        }
+        
+        .product-card .grid.grid-cols-2 {
+          grid-template-columns: 1fr;
+        }
+        
+        .product-card .text-xs {
+          font-size: 0.75rem;
+        }
       }
       
-      /* Mejorar navegación por secciones */
-      .section-nav {
-        position: sticky;
-        top: 0;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 0.5rem;
-        z-index: 40;
-      }
-      
-      /* Botones de navegación rápida */
-      .quick-nav {
-        display: flex;
-        gap: 0.5rem;
-        overflow-x: auto;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-      }
-      
-      .quick-nav button {
-        white-space: nowrap;
-        padding: 0.5rem 1rem;
-        background: rgba(212, 175, 55, 0.2);
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        border-radius: 1rem;
-        color: white;
-        font-size: 0.875rem;
-      }
+
       
       /* Mejorar navegación activa */
       nav a.text-primary {
@@ -401,27 +376,14 @@
           </button>
         </div>
         
-        <!-- Botón para versión móvil -->
-        <div class="mt-4 animate-slide-up">
-          <button onclick="window.location.href='index-mobile.html'" class="bg-gray-800 text-white font-bold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors duration-300 text-sm">
-            <i class="fas fa-mobile-alt mr-2"></i>Versión Móvil
-          </button>
-        </div>
+
       </div>
     </section>
 
     <!-- Products Section -->
     <section id="productos" class="py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Navegación rápida para móviles -->
-        <div class="section-nav md:hidden">
-          <div class="quick-nav">
-            <button onclick="scrollToSection('productos')" class="active">🔥 Principales</button>
-            <button onclick="scrollToSection('amor-amistad')">💕 Amor</button>
-            <button onclick="scrollToSection('navidad')">🎄 Navidad</button>
-            <button onclick="scrollToSection('primera-comunion')">✝️ Comunión</button>
-          </div>
-        </div>
+
         
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-6xl font-bold mb-4 elegant-font">
@@ -724,9 +686,6 @@
       </div>
     </section>
 
-    <!-- Separador para móviles -->
-    <div class="section-divider md:hidden"></div>
-    
     <!-- Catálogo Amor y Amistad Section -->
     <section id="amor-amistad" class="py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1049,9 +1008,6 @@
       </div>
     </section>
 
-    <!-- Separador para móviles -->
-    <div class="section-divider md:hidden"></div>
-    
     <!-- Catálogo de Navidad Section -->
     <section id="navidad" class="py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1374,9 +1330,6 @@
       </div>
     </section>
 
-    <!-- Separador para móviles -->
-    <div class="section-divider md:hidden"></div>
-    
     <!-- Catálogo de Primera Comunión Section -->
     <section id="primera-comunion" class="py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
