@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Detección Móvil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #1a1a1a;
+      color: white;
+    }
+    .info {
+      background: #333;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .mobile { color: #4CAF50; }
+    .desktop { color: #FF9800; }
+    button {
+      background: #D4AF37;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test de Detección Móvil</h1>
+  
+  <div class="info">
+    <h3>Información del Dispositivo:</h3>
+    <p><strong>User Agent:</strong> <span id="userAgent"></span></p>
+    <p><strong>Ancho de pantalla:</strong> <span id="screenWidth"></span>px</p>
+    <p><strong>Alto de pantalla:</strong> <span id="screenHeight"></span>px</p>
+    <p><strong>Orientación:</strong> <span id="orientation"></span></p>
+    <p><strong>Es móvil:</strong> <span id="isMobile" class="mobile"></span></p>
+  </div>
+  
+  <div class="info">
+    <h3>Acciones:</h3>
+    <button onclick="testDetection()">🔄 Probar Detección</button>
+    <button onclick="goToMobile()">📱 Ir a Versión Móvil</button>
+    <button onclick="goToDesktop()">🖥️ Ir a Versión Desktop</button>
+    <button onclick="location.reload()">🔄 Recargar Página</button>
+  </div>
+  
+  <div class="info">
+    <h3>Resultado:</h3>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function isMobile() {
+      // Detectar por User Agent
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+      
+      // Detectar por tamaño de pantalla
+      const isMobileScreen = window.innerWidth <= 768;
+      
+      // Detectar por orientación en móviles
+      const isMobileOrientation = window.orientation !== undefined;
+      
+      return isMobileUA || isMobileScreen || isMobileOrientation;
+    }
+    
+    function updateInfo() {
+      document.getElementById('userAgent').textContent = navigator.userAgent;
+      document.getElementById('screenWidth').textContent = window.innerWidth;
+      document.getElementById('screenHeight').textContent = window.innerHeight;
+      document.getElementById('orientation').textContent = window.orientation !== undefined ? window.orientation : 'No disponible';
+      document.getElementById('isMobile').textContent = isMobile() ? 'SÍ' : 'NO';
+      document.getElementById('isMobile').className = isMobile() ? 'mobile' : 'desktop';
+    }
+    
+    function testDetection() {
+      const mobile = isMobile();
+      const result = mobile ? 
+        '✅ Dispositivo detectado como MÓVIL - Debería redirigir a index-mobile.html' : 
+        '🖥️ Dispositivo detectado como DESKTOP - Debería mostrar index.html';
+      
+      document.getElementById('result').innerHTML = result;
+      updateInfo();
+    }
+    
+    function goToMobile() {
+      window.location.href = 'index-mobile.html';
+    }
+    
+    function goToDesktop() {
+      window.location.href = 'index.html';
+    }
+    
+    // Actualizar información al cargar
+    updateInfo();
+    testDetection();
+    
+    // Actualizar en resize
+    window.addEventListener('resize', updateInfo);
+  </script>
+</body>
+</html> 
