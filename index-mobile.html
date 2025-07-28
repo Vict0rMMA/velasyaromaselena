@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  
+  <title>Velas y Aromas Elena - Móvil</title>
+  <meta name="description" content="Velas artesanales con cera natural y aceites esenciales premium. Aromaterapia de calidad en Colombia." />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D4AF37',
+            secondary: '#B8860B',
+            accent: '#FFD700',
+            facebook: '#1877F2',
+            dark: '#1A1A1A',
+            gold: '#D4AF37',
+            cream: '#F5F5DC',
+            warmGray: '#8B7355',
+            darkWarm: '#2D1810'
+          },
+          fontFamily: {
+            'elegant': ['Playfair Display', 'serif'],
+            'modern': ['Poppins', 'sans-serif']
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.3s ease-out'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .gold-gradient {
+      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+    }
+    
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .product-card {
+      transition: all 0.3s ease;
+      background: linear-gradient(145deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.05) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .product-card:active {
+      transform: scale(0.98);
+      background-color: rgba(212, 175, 55, 0.2);
+    }
+    
+    .page {
+      display: none;
+      animation: slideUp 0.3s ease-out;
+    }
+    
+    .page.active {
+      display: block;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .tab-button {
+      transition: all 0.3s ease;
+    }
+    
+    .tab-button.active {
+      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+      color: black;
+    }
+    
+    .tab-button:active {
+      transform: scale(0.95);
+    }
+    
+    /* Mejoras para móviles */
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <!-- Header Fijo -->
+  <header class="fixed top-0 w-full z-50 glass-effect">
+    <div class="px-4 py-3">
+      <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div class="text-xl font-bold elegant-font">
+          <span class="gold-gradient-text">Elena</span>
+          <div class="text-xs text-warmGray font-normal">VELAS Y AROMAS</div>
+        </div>
+        
+        <!-- Carrito -->
+        <button id="cartBtn" class="relative p-2 text-primary">
+          <i class="fas fa-shopping-cart text-lg"></i>
+          <span id="cartCount" class="absolute -top-1 -right-1 bg-primary text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegación por Pestañas -->
+  <nav class="fixed top-16 w-full z-40 glass-effect border-t border-primary/30">
+    <div class="flex overflow-x-auto scrollbar-hide">
+      <button class="tab-button active flex-shrink-0 px-4 py-3 text-sm font-medium text-white" onclick="showPage('inicio')">
+        <i class="fas fa-home mr-2"></i>Inicio
+      </button>
+      <button class="tab-button flex-shrink-0 px-4 py-3 text-sm font-medium text-white" onclick="showPage('productos')">
+        <i class="fas fa-fire mr-2"></i>Productos
+      </button>
+      <button class="tab-button flex-shrink-0 px-4 py-3 text-sm font-medium text-white" onclick="showPage('amor-amistad')">
+        <i class="fas fa-heart mr-2"></i>Amor
+      </button>
+      <button class="tab-button flex-shrink-0 px-4 py-3 text-sm font-medium text-white" onclick="showPage('navidad')">
+        <i class="fas fa-tree mr-2"></i>Navidad
+      </button>
+      <button class="tab-button flex-shrink-0 px-4 py-3 text-sm font-medium text-white" onclick="showPage('comunion')">
+        <i class="fas fa-cross mr-2"></i>Comunión
+      </button>
+      <button class="tab-button flex-shrink-0 px-4 py-3 text-sm font-medium text-white" onclick="showPage('contacto')">
+        <i class="fas fa-envelope mr-2"></i>Contacto
+      </button>
+    </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <main class="pt-32 pb-20">
+    <!-- Página Inicio -->
+    <div id="inicio" class="page active">
+      <div class="px-4 py-6">
+        <!-- Hero Section -->
+        <div class="text-center mb-8">
+          <div class="candle-flame w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center">
+            <i class="fas fa-fire text-2xl text-black"></i>
+          </div>
+          <h1 class="text-2xl font-bold mb-2 elegant-font">
+            <span class="gold-gradient-text">Velas y Aromas Elena</span>
+          </h1>
+          <p class="text-warmGray text-sm mb-6">🌟 Empresa dedicada a fabricación de velas con las mejores fragancias, decorativas y de consumo 🕯️</p>
+          <div class="bg-gradient-to-r from-primary/20 to-accent/20 p-4 rounded-lg">
+            <p class="text-sm">✨ Envíos a todo Colombia</p>
+            <p class="text-sm">🕯️ Cera natural 100%</p>
+            <p class="text-sm">💕 Aromas únicos</p>
+          </div>
+        </div>
+
+        <!-- Destacados -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-semibold text-primary mb-4">🔥 Productos Destacados</h2>
+          
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-fire text-primary"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Cedro Verbena</h3>
+                <p class="text-sm text-warmGray">Aroma refrescante y natural</p>
+                <p class="text-primary font-bold">$38.900</p>
+              </div>
+              <button onclick="addToCart('Vela Cedro Verbena', 38900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-heart text-primary"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Lavanda</h3>
+                <p class="text-sm text-warmGray">Relajante y calmante</p>
+                <p class="text-primary font-bold">$35.900</p>
+              </div>
+              <button onclick="addToCart('Vela Lavanda', 35900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Página Productos -->
+    <div id="productos" class="page">
+      <div class="px-4 py-6">
+        <h2 class="text-xl font-bold mb-6 elegant-font">
+          <span class="gold-gradient-text">🕯️ Nuestros Productos</span>
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Producto 1 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-leaf text-primary text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Cedro Verbena</h3>
+                <p class="text-xs text-warmGray mb-2">Aroma refrescante y natural</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $38.900</p>
+                  <p><strong>Precio mayorista:</strong> $34.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 30-40h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Cedro Verbena', 38900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 2 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-bamboo text-primary text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Tilo Bamboo</h3>
+                <p class="text-xs text-warmGray mb-2">Aroma relajante y natural</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $36.900</p>
+                  <p><strong>Precio mayorista:</strong> $32.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 30-40h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Tilo Bamboo', 36900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 3 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-heart text-primary text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Lavanda</h3>
+                <p class="text-xs text-warmGray mb-2">Aroma relajante y calmante</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $35.900</p>
+                  <p><strong>Precio mayorista:</strong> $31.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 30-40h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Lavanda', 35900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Página Amor y Amistad -->
+    <div id="amor-amistad" class="page">
+      <div class="px-4 py-6">
+        <h2 class="text-xl font-bold mb-6 elegant-font">
+          <span class="gold-gradient-text">💕 Amor y Amistad</span>
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Producto 1 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-heart text-pink-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Corazón</h3>
+                <p class="text-xs text-warmGray mb-2">Especial San Valentín</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $15.900</p>
+                  <p><strong>Precio mayorista:</strong> $12.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 20-25h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Corazón', 15900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 2 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-rose text-pink-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Rosa Aromática</h3>
+                <p class="text-xs text-warmGray mb-2">Romántica y elegante</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $38.900</p>
+                  <p><strong>Precio mayorista:</strong> $34.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 30-40h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Rosa Aromática', 38900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 3 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-cookie text-pink-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Vainilla Acariciante</h3>
+                <p class="text-xs text-warmGray mb-2">Dulce y acogedora</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $35.900</p>
+                  <p><strong>Precio mayorista:</strong> $31.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 30-40h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Vainilla Acariciante', 35900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Página Navidad -->
+    <div id="navidad" class="page">
+      <div class="px-4 py-6">
+        <h2 class="text-xl font-bold mb-6 elegant-font">
+          <span class="gold-gradient-text">🎄 Navidad</span>
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Producto 1 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-tree text-green-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Pino Navideño</h3>
+                <p class="text-xs text-warmGray mb-2">Aroma fresco y festivo</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $42.900</p>
+                  <p><strong>Precio mayorista:</strong> $38.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 35-45h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Pino Navideño', 42900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 2 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-cookie text-green-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Canela Navideña</h3>
+                <p class="text-xs text-warmGray mb-2">Cálida y especiada</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $39.900</p>
+                  <p><strong>Precio mayorista:</strong> $35.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 30-40h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Canela Navideña', 39900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 3 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-star text-green-500 text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Especias Navideñas</h3>
+                <p class="text-xs text-warmGray mb-2">Mágica y festiva</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $44.900</p>
+                  <p><strong>Precio mayorista:</strong> $40.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 40-50h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Especias Navideñas', 44900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Página Primera Comunión -->
+    <div id="comunion" class="page">
+      <div class="px-4 py-6">
+        <h2 class="text-xl font-bold mb-6 elegant-font">
+          <span class="gold-gradient-text">✝️ Primera Comunión</span>
+        </h2>
+        
+        <div class="space-y-4">
+          <!-- Producto 1 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-cross text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Blanca Sagrada</h3>
+                <p class="text-xs text-warmGray mb-2">Ceremonial y pura</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $45.900</p>
+                  <p><strong>Precio mayorista:</strong> $41.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 45-55h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Blanca Sagrada', 45900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 2 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-pray text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Incienso Sagrado</h3>
+                <p class="text-xs text-warmGray mb-2">Espiritual y divina</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $47.900</p>
+                  <p><strong>Precio mayorista:</strong> $43.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 50-60h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Incienso Sagrado', 47900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Producto 3 -->
+          <div class="product-card p-4 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
+                <i class="fas fa-dove text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Vela Sándalo Sagrado</h3>
+                <p class="text-xs text-warmGray mb-2">Divina y ceremonial</p>
+                <div class="text-xs space-y-1">
+                  <p><strong>Precio detalle:</strong> $49.900</p>
+                  <p><strong>Precio mayorista:</strong> $45.000</p>
+                  <p><strong>Medidas:</strong> 6×6: 6CM × 6CM</p>
+                  <p><strong>Duración:</strong> 55-65h</p>
+                </div>
+              </div>
+              <button onclick="addToCart('Vela Sándalo Sagrado', 49900)" class="bg-primary text-black px-3 py-2 rounded-lg text-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Página Contacto -->
+    <div id="contacto" class="page">
+      <div class="px-4 py-6">
+        <h2 class="text-xl font-bold mb-6 elegant-font">
+          <span class="gold-gradient-text">📞 Contacto</span>
+        </h2>
+        
+        <div class="space-y-6">
+          <!-- Información de Contacto -->
+          <div class="bg-gradient-to-r from-primary/20 to-accent/20 p-4 rounded-lg">
+            <h3 class="font-semibold mb-3">¡Hablemos!</h3>
+            <p class="text-sm text-warmGray mb-4">Estamos aquí para ayudarte con tus pedidos y consultas</p>
+          </div>
+
+          <!-- WhatsApp Principal -->
+          <div class="product-card p-4 rounded-lg">
+            <a href="https://api.whatsapp.com/send/?phone=573008220389&text&type=phone_number&app_absent=0" target="_blank" class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                <i class="fab fa-whatsapp text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">WhatsApp Principal</h3>
+                <p class="text-sm text-warmGray">+57 300 822 0389</p>
+                <p class="text-xs text-primary">Atención rápida</p>
+              </div>
+              <i class="fas fa-arrow-right text-primary"></i>
+            </a>
+          </div>
+
+          <!-- WhatsApp Secundario -->
+          <div class="product-card p-4 rounded-lg">
+            <a href="https://api.whatsapp.com/send/?phone=573246445897&text&type=phone_number&app_absent=0" target="_blank" class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                <i class="fab fa-whatsapp text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">WhatsApp Secundario</h3>
+                <p class="text-sm text-warmGray">+57 324 644 5897</p>
+                <p class="text-xs text-primary">Soporte adicional</p>
+              </div>
+              <i class="fas fa-arrow-right text-primary"></i>
+            </a>
+          </div>
+
+          <!-- Facebook -->
+          <div class="product-card p-4 rounded-lg">
+            <a href="https://web.facebook.com/velasyaromascautiva/?_rdc=1&_rdr#" target="_blank" class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                <i class="fab fa-facebook text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Facebook</h3>
+                <p class="text-sm text-warmGray">Velas y Aromas Cautiva</p>
+                <p class="text-xs text-primary">Síguenos</p>
+              </div>
+              <i class="fas fa-arrow-right text-primary"></i>
+            </a>
+          </div>
+
+          <!-- Instagram -->
+          <div class="product-card p-4 rounded-lg">
+            <a href="https://www.instagram.com/velasyaromaselena" target="_blank" class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <i class="fab fa-instagram text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-semibold">Instagram</h3>
+                <p class="text-sm text-warmGray">@velasyaromaselena</p>
+                <p class="text-xs text-primary">Nuestras fotos</p>
+              </div>
+              <i class="fas fa-arrow-right text-primary"></i>
+            </a>
+          </div>
+
+          <!-- Información de Envíos -->
+          <div class="bg-gradient-to-r from-primary/10 to-accent/10 p-4 rounded-lg">
+            <h3 class="font-semibold mb-2">🚚 Envíos</h3>
+            <div class="text-sm space-y-1">
+              <p>• Bogotá: 1-2 días hábiles</p>
+              <p>• Resto del país: 3-5 días hábiles</p>
+              <p>• Gratis en compras > $100.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Carrito Flotante -->
+  <div id="cartSidebar" class="fixed top-0 right-0 h-full w-80 bg-black/95 transform translate-x-full transition-transform duration-300 z-50">
+    <div class="flex flex-col h-full">
+      <div class="flex justify-between items-center p-4 border-b border-primary/30">
+        <h3 class="text-lg font-semibold">
+          <i class="fas fa-shopping-cart mr-2"></i>Carrito
+        </h3>
+        <button onclick="toggleCart()" class="text-white hover:text-primary">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <!-- Los items del carrito se agregarán aquí -->
+      </div>
+      
+      <div class="p-4 border-t border-primary/30">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-semibold">Total:</span>
+          <span id="cartTotal" class="text-primary font-bold">$0</span>
+        </div>
+        <button onclick="checkout()" class="w-full bg-primary text-black py-3 rounded-lg font-semibold">
+          <i class="fab fa-whatsapp mr-2"></i>Pedir por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot Flotante -->
+  <div id="chatbotWidget" class="fixed bottom-4 right-4 z-40">
+    <button id="chatbotToggle" class="bg-primary text-black p-3 rounded-full shadow-lg hover:bg-accent transition-colors duration-300">
+      <i class="fas fa-comments text-xl"></i>
+    </button>
+  </div>
+
+  <!-- Panel del Chatbot -->
+  <div id="chatbotPanel" class="fixed bottom-20 right-4 w-80 h-96 bg-black/95 rounded-lg shadow-xl hidden z-50">
+    <div class="flex flex-col h-full">
+      <div class="flex justify-between items-center p-3 border-b border-primary/30">
+        <h3 class="font-semibold">
+          <i class="fas fa-robot mr-2"></i>Asistente Elena
+        </h3>
+        <button id="closeChatbot" class="text-white hover:text-primary">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div id="chatMessages" class="flex-1 overflow-y-auto p-3 space-y-2">
+        <div class="bg-white/10 p-2 rounded-lg">
+          <p class="text-sm">¡Hola! Soy Elena, tu asistente virtual. ¿En qué puedo ayudarte?</p>
+        </div>
+      </div>
+      
+      <div class="p-3 border-t border-primary/30">
+        <div class="flex space-x-2">
+          <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." class="flex-1 bg-white/10 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+          <button id="sendMessage" class="bg-primary text-black px-3 py-2 rounded-lg">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/mobile-script.js"></script>
+</body>
+</html> 

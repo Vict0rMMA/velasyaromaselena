@@ -116,6 +116,69 @@
       background: radial-gradient(circle, #FFD700 0%, #D4AF37 50%, #B8860B 100%);
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
+    
+    /* Mejoras para móviles */
+    @media (max-width: 768px) {
+      .product-card {
+        margin-bottom: 1rem;
+      }
+      
+      .product-card:hover {
+        transform: none;
+      }
+      
+      /* Mejorar botones táctiles */
+      button, a {
+        min-height: 44px;
+        min-width: 44px;
+      }
+      
+      /* Mejorar navegación móvil */
+      #mobileMenu a {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      #mobileMenu a:active {
+        background-color: rgba(212, 175, 55, 0.2) !important;
+        transform: scale(0.98);
+      }
+      
+      /* Mejorar scroll en móviles */
+      html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      /* Mejorar botones de carrito */
+      #cartBtn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      /* Mejorar hamburger menu */
+      #mobileMenuBtn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      /* Mejorar espaciado en móviles */
+      .space-y-2 > * + * {
+        margin-top: 0.5rem;
+      }
+      
+      /* Mejorar botones de productos */
+      .product-card button {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+      }
+    }
   </style>
 </head>
 <body class="bg-black text-white">
@@ -157,14 +220,28 @@
     
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="md:hidden hidden glass-effect border-t border-primary/30">
-      <div class="px-4 py-4 space-y-4">
-        <a href="#inicio" class="block text-white hover:text-primary transition-colors duration-300">Inicio</a>
-        <a href="#productos" class="block text-white hover:text-primary transition-colors duration-300">Productos</a>
-        <a href="#amor-amistad" class="block text-white hover:text-primary transition-colors duration-300">Amor y Amistad</a>
-        <a href="#navidad" class="block text-white hover:text-primary transition-colors duration-300">Navidad</a>
-        <a href="#primera-comunion" class="block text-white hover:text-primary transition-colors duration-300">Primera Comunión</a>
-        <a href="#nosotros" class="block text-white hover:text-primary transition-colors duration-300">Nosotros</a>
-        <a href="#contacto" class="block text-white hover:text-primary transition-colors duration-300">Contacto</a>
+      <div class="px-4 py-4 space-y-2">
+        <a href="#inicio" onclick="closeMobileMenu()" class="block text-white hover:text-primary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-primary/10 active:bg-primary/20">
+          <i class="fas fa-home mr-3"></i>🏠 Inicio
+        </a>
+        <a href="#productos" onclick="closeMobileMenu()" class="block text-white hover:text-primary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-primary/10 active:bg-primary/20">
+          <i class="fas fa-fire mr-3"></i>🕯️ Productos
+        </a>
+        <a href="#amor-amistad" onclick="closeMobileMenu()" class="block text-white hover:text-primary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-primary/10 active:bg-primary/20">
+          <i class="fas fa-heart mr-3"></i>💕 Amor y Amistad
+        </a>
+        <a href="#navidad" onclick="closeMobileMenu()" class="block text-white hover:text-primary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-primary/10 active:bg-primary/20">
+          <i class="fas fa-tree mr-3"></i>🎄 Navidad
+        </a>
+        <a href="#primera-comunion" onclick="closeMobileMenu()" class="block text-white hover:text-primary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-primary/10 active:bg-primary/20">
+          <i class="fas fa-cross mr-3"></i>✝️ Primera Comunión
+        </a>
+        <a href="#nosotros" onclick="closeMobileMenu()" class="block text-white hover:text-primary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-primary/10 active:bg-primary/20">
+          <i class="fas fa-users mr-3"></i>👥 Nosotros
+        </a>
+        <a href="#contacto" onclick="closeMobileMenu()" class="block text-white hover:text-primary transition-colors duration-300 py-3 px-4 rounded-lg hover:bg-primary/10 active:bg-primary/20">
+          <i class="fas fa-envelope mr-3"></i>📞 Contacto
+        </a>
       </div>
     </div>
   </header>
@@ -211,7 +288,7 @@
           <span class="gold-gradient-text">Aromaterapia</span>
         </h1>
         <p class="text-xl md:text-2xl mb-8 text-cream animate-slide-up">
-          Velas artesanales y fragancias naturales ✨
+          🌟 Empresa dedicada a fabricación de velas con las mejores fragancias, decorativas y de consumo 🕯️
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
           <button onclick="scrollToSection('productos')" class="gold-gradient text-black font-bold py-4 px-8 rounded-full hover:opacity-90 transition-opacity duration-300">
