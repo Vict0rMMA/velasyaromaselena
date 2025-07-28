@@ -2,21 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  
-  <!-- Favicon removido temporalmente -->
-  
-  <!-- Accesibilidad -->
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="Spanish">
-  <meta name="geo.region" content="CO">
-  <meta name="geo.placename" content="Colombia">
-  
-  <!-- Sitemap -->
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
   <title>Velas y Aromas Elena - Velas Artesanales y Aromaterapia en Colombia</title>
@@ -31,294 +17,1585 @@
   <meta property="og:url" content="https://velasyaromaselena.com" />
   <meta property="og:image" content="https://velasyaromaselena.com/assets/hero-bg.jpg" />
   
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Velas y Aromas Elena" />
-  <meta name="twitter:description" content="Velas artesanales con cera natural y aceites esenciales premium" />
-  
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Velas y Aromas Elena",
-    "description": "Velas artesanales con cera natural y aceites esenciales premium",
-    "url": "https://velasyaromaselena.com",
-    "telephone": "+573008220389",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "CO"
-    },
-    "sameAs": [
-      "https://www.instagram.com/velasyaromaselena",
-      "https://web.facebook.com/velasyaromascautiva"
-    ]
-  }
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D4AF37', // Dorado principal del logo
+            secondary: '#B8860B', // Dorado oscuro
+            accent: '#FFD700', // Dorado brillante
+            gold: '#FFD700', // Dorado puro
+            darkGold: '#B8860B', // Dorado oscuro
+            cream: '#FFF8DC', // Crema suave
+            warmGray: '#8B7355', // Gris cálido
+            darkWarm: '#654321', // Marrón oscuro cálido
+            white: '#FFFFFF', // Blanco puro
+            black: '#1a1a1a' // Negro suave
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate'
+          }
+        }
+      }
+    }
   </script>
   
-  <!-- Preload recursos críticos -->
-  <link rel="preload" href="css/style.css" as="style">
-  <link rel="preload" href="js/script.js" as="script">
-  
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+    
+    .elegant-font {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+      to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
+    }
+    
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .gold-gradient {
+      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+    }
+    
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .product-card {
+      transition: all 0.3s ease;
+      background: linear-gradient(145deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.05) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.5);
+    }
+    
+    .candle-flame {
+      background: radial-gradient(circle, #FFD700 0%, #D4AF37 50%, #B8860B 100%);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+  </style>
 </head>
-<body>
-  <header class="header">
-    <div class="header-container">
-      <!-- Menú hamburguesa para móviles -->
-      <div class="hamburger-menu" id="hamburgerMenu" role="button" aria-label="Abrir menú de navegación" tabindex="0">
-        <span></span>
-        <span></span>
-        <span></span>
+<body class="bg-black text-white">
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 glass-effect">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo/Brand -->
+        <div class="text-2xl font-bold elegant-font">
+          <span class="gold-gradient-text">Elena</span>
+          <div class="text-sm text-warmGray font-normal">VELAS Y AROMAS</div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#inicio" class="text-white hover:text-primary transition-colors duration-300">Inicio</a>
+          <a href="#productos" class="text-white hover:text-primary transition-colors duration-300">Productos</a>
+          <a href="#amor-amistad" class="text-white hover:text-primary transition-colors duration-300">Amor y Amistad</a>
+          <a href="#navidad" class="text-white hover:text-primary transition-colors duration-300">Navidad</a>
+          <a href="#primera-comunion" class="text-white hover:text-primary transition-colors duration-300">Primera Comunión</a>
+          <a href="#nosotros" class="text-white hover:text-primary transition-colors duration-300">Nosotros</a>
+          <a href="#contacto" class="text-white hover:text-primary transition-colors duration-300">Contacto</a>
+        </nav>
+        
+        <!-- Cart Icon -->
+        <div class="flex items-center space-x-4">
+          <button id="cartBtn" class="relative p-2 text-primary hover:text-accent transition-colors duration-300">
+            <i class="fas fa-shopping-cart text-xl"></i>
+            <span id="cartCount" class="absolute -top-1 -right-1 bg-primary text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="md:hidden text-white">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
       </div>
-      
-      <nav class="nav" id="navMenu" role="navigation" aria-label="Navegación principal">
-        <a href="#" aria-label="Ir al inicio"><i class="fas fa-home" aria-hidden="true"></i> Inicio</a>
-        <a href="#productos" aria-label="Ver productos"><i class="fas fa-fire" aria-hidden="true"></i> Productos</a>
-        <a href="#nosotros" aria-label="Conocer más sobre nosotros"><i class="fas fa-heart" aria-hidden="true"></i> Nosotros</a>
-        <a href="#contacto" aria-label="Contactar"><i class="fas fa-envelope" aria-hidden="true"></i> Contacto</a>
-      </nav>
-      
-      <div class="cart-icon" onclick="toggleCart()" role="button" aria-label="Abrir carrito de compras" tabindex="0">
-        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-        <span class="cart-count" id="cartCount" aria-label="Cantidad de productos en el carrito">0</span>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden glass-effect border-t border-primary/30">
+      <div class="px-4 py-4 space-y-4">
+        <a href="#inicio" class="block text-white hover:text-primary transition-colors duration-300">Inicio</a>
+        <a href="#productos" class="block text-white hover:text-primary transition-colors duration-300">Productos</a>
+        <a href="#amor-amistad" class="block text-white hover:text-primary transition-colors duration-300">Amor y Amistad</a>
+        <a href="#navidad" class="block text-white hover:text-primary transition-colors duration-300">Navidad</a>
+        <a href="#primera-comunion" class="block text-white hover:text-primary transition-colors duration-300">Primera Comunión</a>
+        <a href="#nosotros" class="block text-white hover:text-primary transition-colors duration-300">Nosotros</a>
+        <a href="#contacto" class="block text-white hover:text-primary transition-colors duration-300">Contacto</a>
       </div>
     </div>
   </header>
 
-  <!-- Carrito de compras -->
-  <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-      <h3><i class="fas fa-shopping-cart"></i> Carrito de Compras</h3>
-      <button class="close-cart" onclick="toggleCart()">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="cart-items" id="cartItems">
-      <!-- Los items del carrito se agregarán aquí dinámicamente -->
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Total:</span>
-        <span id="cartTotal">$0 COP</span>
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="fixed top-0 right-0 h-full w-80 bg-black border-l border-primary/30 transform translate-x-full transition-transform duration-300 z-50">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-primary elegant-font">Carrito de Compras</h3>
+        <button id="closeCart" class="text-white hover:text-primary transition-colors duration-300">
+          <i class="fas fa-times text-xl"></i>
+        </button>
       </div>
-      <button class="checkout-btn" onclick="checkout()">
-        <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
-      </button>
+      
+      <div id="cartItems" class="space-y-4 mb-6">
+        <!-- Cart items will be added here -->
+      </div>
+      
+      <div class="border-t border-primary/30 pt-4">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-lg font-semibold">Total:</span>
+          <span id="cartTotal" class="text-xl font-bold text-primary">$0 COP</span>
+        </div>
+        <button id="checkoutBtn" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+          <i class="fab fa-whatsapp mr-2"></i>Enviar Pedido por WhatsApp
+        </button>
+      </div>
     </div>
   </div>
 
+  <!-- Main Content -->
   <main>
-    <!-- SECCIÓN HERO - BIENVENIDA -->
-    <section class="hero">
-      <h1>Descubre el arte de la aromaterapia</h1>
-      <p>Velas artesanales y fragancias naturales ✨</p>
-      <div class="hero-buttons">
-        <button class="cta-button" onclick="scrollToSection('productos')">
-          <i class="fas fa-shopping-cart"></i> Ver Productos
-        </button>
-        <button class="cta-button secondary" onclick="scrollToSection('nosotros')">
-          <i class="fas fa-info-circle"></i> Conoce Más
-        </button>
-      </div>
-    </section>
-
-    <!-- SECCIÓN PRODUCTOS - CATÁLOGO -->
-    <hr class="section-divider">
-    <section id="productos" class="galeria">
-      <h2>✨ Nuestras Velas Artesanales ✨</h2>
-      <p class="galeria-subtitle">Descubre nuestra colección de velas aromáticas hechas con cera natural y aceites esenciales premium</p>
-      <div class="productos-container">
-        <!-- COLECCIÓN PRINCIPAL -->
-        <div class="producto">
-          <div class="producto-badge">🔥 Más Vendida</div>
-          <img src="assets/productos/vela1.svg" alt="Cedro Verbena 6×6" loading="lazy" />
-          <h3>CEDRO VERBENA 6×6</h3>
-          <p class="producto-descripcion">Aroma relajante de cedro y verbena</p>
-          <p class="precio">$32.900 COP</p>
-          <button onclick="agregarCarrito('Cedro Verbena 6×6')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-          </button>
+    <!-- Hero Section -->
+    <section id="inicio" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10"></div>
+      <div class="relative z-10 text-center px-4">
+        <div class="mb-8">
+          <div class="w-24 h-24 mx-auto mb-6 candle-flame rounded-full flex items-center justify-center animate-glow">
+            <i class="fas fa-fire text-3xl text-black"></i>
+          </div>
         </div>
-        
-        <div class="producto">
-          <div class="producto-badge">✨ Nueva</div>
-          <img src="assets/productos/vela2.svg" alt="Tilo Bamboo 6×6" loading="lazy" />
-          <h3>TILO BAMBOO 6×6</h3>
-          <p class="producto-descripcion">Fragancia suave de tilo y bambú</p>
-          <p class="precio">$32.900 COP</p>
-          <button onclick="agregarCarrito('Tilo Bamboo 6×6')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in elegant-font">
+          Descubre el Arte de la
+          <span class="gold-gradient-text">Aromaterapia</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-cream animate-slide-up">
+          Velas artesanales y fragancias naturales ✨
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+          <button onclick="scrollToSection('productos')" class="gold-gradient text-black font-bold py-4 px-8 rounded-full hover:opacity-90 transition-opacity duration-300">
+            <i class="fas fa-shopping-cart mr-2"></i>Ver Productos
           </button>
-        </div>
-        
-        <div class="producto">
-          <div class="producto-badge">💎 Oferta</div>
-          <img src="assets/productos/vela3.svg" alt="Cedro Verbena 6×10" loading="lazy" />
-          <h3>CEDRO VERBENA 6×10</h3>
-          <p class="producto-descripcion">Versión grande con mayor duración</p>
-          <p class="precio"><s>$44.900</s> $39.900 COP</p>
-          <button onclick="agregarCarrito('Cedro Verbena 6×10')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-          </button>
-        </div>
-        
-        <!-- NUEVOS PRODUCTOS -->
-        <div class="producto">
-          <div class="producto-badge">🌿 Natural</div>
-          <img src="assets/productos/vela4.svg" alt="Lavanda Relajante 6×6" loading="lazy" />
-          <h3>LAVANDA RELAJANTE 6×6</h3>
-          <p class="producto-descripcion">Aroma calmante de lavanda pura</p>
-          <p class="precio">$35.900 COP</p>
-          <button onclick="agregarCarrito('Lavanda Relajante 6×6')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-          </button>
-        </div>
-        
-        <div class="producto">
-          <div class="producto-badge">🌸 Premium</div>
-          <img src="assets/productos/vela5.svg" alt="Rosa Silvestre 6×6" loading="lazy" />
-          <h3>ROSA SILVESTRE 6×6</h3>
-          <p class="producto-descripcion">Fragancia romántica de rosas</p>
-          <p class="precio">$38.900 COP</p>
-          <button onclick="agregarCarrito('Rosa Silvestre 6×6')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-          </button>
-        </div>
-        
-        <div class="producto">
-          <div class="producto-badge">🌊 Fresca</div>
-          <img src="assets/productos/vela6.svg" alt="Menta Eucalipto 6×6" loading="lazy" />
-          <h3>MENTA EUCALIPTO 6×6</h3>
-          <p class="producto-descripcion">Aroma refrescante y energizante</p>
-          <p class="precio">$33.900 COP</p>
-          <button onclick="agregarCarrito('Menta Eucalipto 6×6')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-          </button>
-        </div>
-        
-        <!-- VELAS GRANDES -->
-        <div class="producto">
-          <div class="producto-badge">🕯️ Grande</div>
-          <img src="assets/productos/vela7.svg" alt="Lavanda Relajante 6×10" loading="lazy" />
-          <h3>LAVANDA RELAJANTE 6×10</h3>
-          <p class="producto-descripcion">Versión grande para espacios amplios</p>
-          <p class="precio"><s>$48.900</s> $42.900 COP</p>
-          <button onclick="agregarCarrito('Lavanda Relajante 6×10')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-          </button>
-        </div>
-        
-        <div class="producto">
-          <div class="producto-badge">🌟 Premium</div>
-          <img src="assets/productos/vela8.svg" alt="Rosa Silvestre 6×10" loading="lazy" />
-          <h3>ROSA SILVESTRE 6×10</h3>
-          <p class="producto-descripcion">Versión grande con aroma intenso</p>
-          <p class="precio"><s>$52.900</s> $45.900 COP</p>
-          <button onclick="agregarCarrito('Rosa Silvestre 6×10')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-          </button>
-        </div>
-        
-        <div class="producto">
-          <div class="producto-badge">🎁 Regalo</div>
-          <img src="assets/productos/vela9.svg" alt="Set 3 Velas 6×6" loading="lazy" />
-          <h3>SET 3 VELAS 6×6</h3>
-          <p class="producto-descripcion">Pack perfecto para regalo</p>
-          <p class="precio"><s>$98.700</s> $89.900 COP</p>
-          <button onclick="agregarCarrito('Set 3 Velas 6×6')">
-            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          <button onclick="scrollToSection('nosotros')" class="border-2 border-primary text-primary font-bold py-4 px-8 rounded-full hover:bg-primary hover:text-black transition-colors duration-300">
+            <i class="fas fa-info-circle mr-2"></i>Conoce Más
           </button>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN NOSOTROS - HISTORIA -->
-    <hr class="section-divider">
-    <section id="nosotros" class="nosotros">
-      <h2>Sobre Nosotros</h2>
-      <p>Elena diseña cada vela artesanalmente usando cera natural y aceites esenciales premium 🌿</p>
+    <!-- Products Section -->
+    <section id="productos" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-6xl font-bold mb-4 elegant-font">
+            ✨ Nuestras Velas Artesanales ✨
+          </h2>
+          <p class="text-xl text-cream max-w-3xl mx-auto">
+            Descubre nuestra colección de velas aromáticas hechas con cera natural y aceites esenciales premium
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Product Card 1 -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-primary text-black px-3 py-1 rounded-full text-sm font-bold">
+                🔥 Más Vendida
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza este div con tu imagen real -->
+                <img src="assets/productos/cedro-verbena.jpg" alt="Vela Cedro Verbena" class="w-full h-full object-cover rounded-xl">
+                <!-- Si no tienes imagen, usa el icono como respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-fire text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA CEDRO VERBENA</h3>
+            <p class="text-cream mb-4">Aroma relajante de cedro y verbena</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $32.900</p>
+                <p class="text-sm text-cream">6×10: $39.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $28.000</p>
+                <p class="text-sm text-cream">6×10: $35.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Cedro Verbena 6×6', 32900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-accent text-black px-3 py-1 rounded-full text-sm font-bold">
+                ✨ Nueva
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-accent/20 to-primary/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza este div con tu imagen real -->
+                <img src="assets/productos/tilo-bamboo.jpg" alt="Vela Tilo Bamboo" class="w-full h-full object-cover rounded-xl">
+                <!-- Si no tienes imagen, usa el icono como respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-star text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA TILO BAMBOO</h3>
+            <p class="text-cream mb-4">Fragancia suave de tilo y bambú</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $32.900</p>
+                <p class="text-sm text-cream">6×10: $39.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $28.000</p>
+                <p class="text-sm text-cream">6×10: $35.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Tilo Bamboo 6×6', 32900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-bold">
+                💎 Oferta
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-secondary/20 to-darkGold/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza este div con tu imagen real -->
+                <img src="assets/productos/lavanda.jpg" alt="Vela Lavanda Relajante" class="w-full h-full object-cover rounded-xl">
+                <!-- Si no tienes imagen, usa el icono como respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-gem text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA LAVANDA RELAJANTE</h3>
+            <p class="text-cream mb-4">Aroma calmante de lavanda natural</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $35.900</p>
+                <p class="text-sm text-cream">6×10: $42.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $31.000</p>
+                <p class="text-sm text-cream">6×10: $38.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Lavanda Relajante 6×6', 35900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 4 - MATERA VELA MARIPOSA MINI -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🦋 Especial
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Imagen real de la Matera Mariposa -->
+                <img src="assets/productos/matera-mariposa.jpg" alt="Matera Vela Mariposa Mini - Mariposa roja sobre base rosa trenzada" class="w-full h-full object-cover rounded-xl">
+                <!-- Si no tienes imagen, usa el icono como respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-butterfly text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">MATERA VELA MARIPOSA MINI</h3>
+            <p class="text-cream mb-4">Vela decorativa con mariposa roja sobre base rosa trenzada</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">BOLSA: $5.900</p>
+                <p class="text-sm text-cream">CAJA: $7.000</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">BOLSA: $5.200</p>
+                <p class="text-sm text-cream">CAJA: $6.500</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>ALTURA: 6.5CM</p>
+                <p>ANCHO: 6CM</p>
+                <p>PESO: 62gr</p>
+                <p>DURACIÓN: 8-12h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Matera Vela Mariposa Mini', 5900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                💜 Romántica
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza este div con tu imagen real -->
+                <img src="assets/productos/rosa-silvestre.jpg" alt="Vela Rosa Silvestre" class="w-full h-full object-cover rounded-xl">
+                <!-- Si no tienes imagen, usa el icono como respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-heart text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA ROSA SILVESTRE</h3>
+            <p class="text-cream mb-4">Aroma romántico de rosas naturales</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $38.900</p>
+                <p class="text-sm text-cream">6×10: $45.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $34.000</p>
+                <p class="text-sm text-cream">6×10: $41.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Rosa Silvestre 6×6', 38900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                ⚡ Energía
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza este div con tu imagen real -->
+                <img src="assets/productos/citricos.jpg" alt="Vela Cítricos Energizantes" class="w-full h-full object-cover rounded-xl">
+                <!-- Si no tienes imagen, usa el icono como respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-sun text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA CÍTRICOS ENERGIZANTES</h3>
+            <p class="text-cream mb-4">Aroma refrescante de limón y naranja</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $32.900</p>
+                <p class="text-sm text-cream">6×10: $39.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $28.000</p>
+                <p class="text-sm text-cream">6×10: $35.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Cítricos Energizantes 6×6', 32900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO - INFORMACIÓN -->
-    <hr class="section-divider">
-    <section id="contacto" class="contacto">
-      <h2>Contáctanos</h2>
-              <div class="contacto-container">
-          <div class="contacto-info">
-            <div class="contacto-item whatsapp-primary">
-              <i class="fab fa-whatsapp"></i>
-              <div>
-                <h3>WhatsApp Principal</h3>
-                <p><a href="https://api.whatsapp.com/send/?phone=573008220389&text&type=phone_number&app_absent=0" target="_blank">+57 300 822 0389</a></p>
-                <small>Respuesta inmediata</small>
+    <!-- Catálogo Amor y Amistad Section -->
+    <section id="amor-amistad" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-6xl font-bold mb-4 elegant-font">
+            💕 Catálogo Amor y Amistad 💕
+          </h2>
+          <p class="text-xl text-cream max-w-3xl mx-auto">
+            Productos especiales para expresar amor, amistad y cariño. Regalos únicos para esas personas especiales
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Product Card 1 - Vela Corazón -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                ❤️ Amor
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-red-500/20 to-pink-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-corazon.jpg" alt="Vela Corazón" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-heart text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA CORAZÓN</h3>
+            <p class="text-cream mb-4">Vela aromática con forma de corazón</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">UNITARIO: $15.900</p>
+                <p class="text-sm text-cream">PACK 3: $42.000</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">UNITARIO: $13.500</p>
+                <p class="text-sm text-cream">PACK 3: $36.000</p>
               </div>
             </div>
             
-            <div class="contacto-item whatsapp-secondary">
-              <i class="fab fa-whatsapp"></i>
-              <div>
-                <h3>WhatsApp Secundario</h3>
-                <p><a href="https://api.whatsapp.com/send/?phone=573246445897&text&type=phone_number&app_absent=0" target="_blank">+57 324 644 5897</a></p>
-                <small>Respuesta en minutos</small>
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>ALTURA: 8CM</p>
+                <p>ANCHO: 6CM</p>
+                <p>PESO: 120gr</p>
+                <p>DURACIÓN: 15-20h</p>
               </div>
             </div>
             
-            <div class="contacto-item instagram">
-              <i class="fab fa-instagram"></i>
-              <div>
-                <h3>Instagram</h3>
-                <p><a href="https://www.instagram.com/velasyaromaselena" target="_blank">@velasyaromaselena</a></p>
-                <small>Nuevos productos y ofertas</small>
+            <button onclick="addToCart('Vela Corazón', 15900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 2 - Vela Rosa -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🌹 Romántica
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-rosa.jpg" alt="Vela Rosa" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-rose text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA ROSA AROMÁTICA</h3>
+            <p class="text-cream mb-4">Aroma romántico de rosas naturales</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $38.900</p>
+                <p class="text-sm text-cream">6×10: $45.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $34.000</p>
+                <p class="text-sm text-cream">6×10: $41.000</p>
               </div>
             </div>
             
-            <div class="contacto-item facebook">
-              <i class="fab fa-facebook"></i>
-              <div>
-                <h3>Facebook</h3>
-                <p><a href="https://web.facebook.com/velasyaromascautiva/?_rdc=1&_rdr#" target="_blank">@velasyaromascautiva</a></p>
-                <small>Comunidad y eventos</small>
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Rosa Aromática 6×6', 38900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 3 - Vela Vainilla -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">
+                🍯 Dulce
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-vainilla.jpg" alt="Vela Vainilla" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-star text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA VAINILLA ACARICIANTE</h3>
+            <p class="text-cream mb-4">Aroma dulce y acogedor de vainilla</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $35.900</p>
+                <p class="text-sm text-cream">6×10: $42.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $31.000</p>
+                <p class="text-sm text-cream">6×10: $38.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Vainilla Acariciante 6×6', 35900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 4 - Vela Chocolate -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-brown-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🍫 Tentadora
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-brown-600/20 to-yellow-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-chocolate.jpg" alt="Vela Chocolate" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-cookie text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA CHOCOLATE TENTADOR</h3>
+            <p class="text-cream mb-4">Aroma irresistible de chocolate</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $36.900</p>
+                <p class="text-sm text-cream">6×10: $43.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $32.000</p>
+                <p class="text-sm text-cream">6×10: $39.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Chocolate Tentador 6×6', 36900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 5 - Vela Fresa -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-red-400 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🍓 Frutal
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-red-400/20 to-pink-400/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-fresa.jpg" alt="Vela Fresa" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-seedling text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA FRESA DULCE</h3>
+            <p class="text-cream mb-4">Aroma fresco y dulce de fresa</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $34.900</p>
+                <p class="text-sm text-cream">6×10: $41.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $30.000</p>
+                <p class="text-sm text-cream">6×10: $37.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Fresa Dulce 6×6', 34900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 6 - Vela Canela -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🧡 Cálida
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-canela.jpg" alt="Vela Canela" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-fire text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA CANELA CÁLIDA</h3>
+            <p class="text-cream mb-4">Aroma cálido y especiado de canela</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $33.900</p>
+                <p class="text-sm text-cream">6×10: $40.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $29.000</p>
+                <p class="text-sm text-cream">6×10: $36.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Canela Cálida 6×6', 33900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-12">
+          <div class="bg-gradient-to-r from-red-500/10 to-pink-500/10 rounded-2xl p-8 border border-red-500/20">
+            <h3 class="text-2xl font-bold text-primary mb-4 elegant-font">💝 Regalos Especiales para Amor y Amistad</h3>
+            <p class="text-cream mb-6 max-w-2xl mx-auto">
+              Sorprende a esa persona especial con nuestras velas aromáticas. Cada vela está diseñada para crear momentos mágicos y memorables.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onclick="scrollToSection('contacto')" class="gold-gradient text-black font-bold py-3 px-8 rounded-full hover:opacity-90 transition-opacity duration-300">
+                <i class="fas fa-heart mr-2"></i>Hacer Pedido Especial
+              </button>
+              <button onclick="scrollToSection('productos')" class="border-2 border-primary text-primary font-bold py-3 px-8 rounded-full hover:bg-primary hover:text-black transition-colors duration-300">
+                <i class="fas fa-shopping-bag mr-2"></i>Ver Todos los Productos
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Navidad Section -->
+    <section id="navidad" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-6xl font-bold mb-4 elegant-font">
+            🎄 Catálogo de Navidad 🎄
+          </h2>
+          <p class="text-xl text-cream max-w-3xl mx-auto">
+            Ilumina tus fiestas con nuestras velas navideñas. Aromas especiales para crear la magia de la Navidad
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Product Card 1 - Vela Pino -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🌲 Navidad
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-green-600/20 to-green-800/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-pino.jpg" alt="Vela Pino Navideño" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-tree text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA PINO NAVIDEÑO</h3>
+            <p class="text-cream mb-4">Aroma fresco de pino y especias navideñas</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $42.900</p>
+                <p class="text-sm text-cream">6×10: $49.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $38.000</p>
+                <p class="text-sm text-cream">6×10: $45.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Pino Navideño 6×6', 42900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 2 - Vela Canela Navideña -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🧡 Especiada
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-canela-navidad.jpg" alt="Vela Canela Navideña" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-star text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA CANELA NAVIDEÑA</h3>
+            <p class="text-cream mb-4">Aroma cálido de canela y especias festivas</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $39.900</p>
+                <p class="text-sm text-cream">6×10: $46.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $35.000</p>
+                <p class="text-sm text-cream">6×10: $42.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Canela Navideña 6×6', 39900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 3 - Vela Vainilla Navideña -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">
+                🍯 Dulce
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-vainilla-navidad.jpg" alt="Vela Vainilla Navideña" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-gift text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA VAINILLA NAVIDEÑA</h3>
+            <p class="text-cream mb-4">Aroma dulce de vainilla y galletas navideñas</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $41.900</p>
+                <p class="text-sm text-cream">6×10: $48.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $37.000</p>
+                <p class="text-sm text-cream">6×10: $44.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Vainilla Navideña 6×6', 41900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 4 - Vela Chocolate Navideño -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-brown-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🍫 Tentador
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-brown-600/20 to-yellow-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-chocolate-navidad.jpg" alt="Vela Chocolate Navideño" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-cookie text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA CHOCOLATE NAVIDEÑO</h3>
+            <p class="text-cream mb-4">Aroma irresistible de chocolate caliente</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $43.900</p>
+                <p class="text-sm text-cream">6×10: $50.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $39.000</p>
+                <p class="text-sm text-cream">6×10: $46.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Chocolate Navideño 6×6', 43900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 5 - Vela Manzana Canela -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🍎 Festiva
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-red-500/20 to-green-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-manzana-canela.jpg" alt="Vela Manzana Canela" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-apple-alt text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA MANZANA CANELA</h3>
+            <p class="text-cream mb-4">Aroma festivo de manzana y canela</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $40.900</p>
+                <p class="text-sm text-cream">6×10: $47.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $36.000</p>
+                <p class="text-sm text-cream">6×10: $43.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Manzana Canela 6×6', 40900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 6 - Vela Especias Navideñas -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                ✨ Mágica
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-especias-navidad.jpg" alt="Vela Especias Navideñas" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-magic text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA ESPECIAS NAVIDEÑAS</h3>
+            <p class="text-cream mb-4">Aroma mágico de especias festivas</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $44.900</p>
+                <p class="text-sm text-cream">6×10: $51.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $40.000</p>
+                <p class="text-sm text-cream">6×10: $47.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Especias Navideñas 6×6', 44900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+        </div>
+
+        <!-- Call to Action Navidad -->
+        <div class="text-center mt-12">
+          <div class="bg-gradient-to-r from-green-600/10 to-red-600/10 rounded-2xl p-8 border border-green-500/20">
+            <h3 class="text-2xl font-bold text-primary mb-4 elegant-font">🎁 Ilumina tu Navidad con Aromas Mágicos</h3>
+            <p class="text-cream mb-6 max-w-2xl mx-auto">
+              Crea el ambiente perfecto para las fiestas navideñas con nuestras velas aromáticas. Cada vela trae la magia y calidez de la Navidad a tu hogar.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onclick="scrollToSection('contacto')" class="gold-gradient text-black font-bold py-3 px-8 rounded-full hover:opacity-90 transition-opacity duration-300">
+                <i class="fas fa-gift mr-2"></i>Hacer Pedido Navideño
+              </button>
+              <button onclick="scrollToSection('primera-comunion')" class="border-2 border-primary text-primary font-bold py-3 px-8 rounded-full hover:bg-primary hover:text-black transition-colors duration-300">
+                <i class="fas fa-cross mr-2"></i>Ver Primera Comunión
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Primera Comunión Section -->
+    <section id="primera-comunion" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-6xl font-bold mb-4 elegant-font">
+            ✝️ Catálogo de Primera Comunión ✝️
+          </h2>
+          <p class="text-xl text-cream max-w-3xl mx-auto">
+            Velas especiales para celebrar la Primera Comunión. Momentos sagrados y memorables
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Product Card 1 - Vela Blanca Sagrada -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-white text-gray-800 px-3 py-1 rounded-full text-sm font-bold">
+                ✝️ Sagrada
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-white/20 to-gray-200/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-blanca-sagrada.jpg" alt="Vela Blanca Sagrada" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-cross text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA BLANCA SAGRADA</h3>
+            <p class="text-cream mb-4">Vela ceremonial para Primera Comunión</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $45.900</p>
+                <p class="text-sm text-cream">6×10: $52.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $41.000</p>
+                <p class="text-sm text-cream">6×10: $48.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Blanca Sagrada 6×6', 45900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 2 - Vela Incienso Sagrado -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🕊️ Espiritual
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-incienso-sagrado.jpg" alt="Vela Incienso Sagrado" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-dove text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA INCIENSO SAGRADO</h3>
+            <p class="text-cream mb-4">Aroma espiritual de incienso y mirra</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $47.900</p>
+                <p class="text-sm text-cream">6×10: $54.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $43.000</p>
+                <p class="text-sm text-cream">6×10: $50.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Incienso Sagrado 6×6', 47900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 3 - Vela Sándalo Sagrado -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🌟 Divina
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-yellow-600/20 to-orange-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-sandalo-sagrado.jpg" alt="Vela Sándalo Sagrado" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-star text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA SÁNDALO SAGRADO</h3>
+            <p class="text-cream mb-4">Aroma divino de sándalo y oraciones</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $49.900</p>
+                <p class="text-sm text-cream">6×10: $56.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $45.000</p>
+                <p class="text-sm text-cream">6×10: $52.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Sándalo Sagrado 6×6', 49900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 4 - Vela Rosa Sagrada -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🌸 Pura
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-rosa-sagrada.jpg" alt="Vela Rosa Sagrada" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-heart text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA ROSA SAGRADA</h3>
+            <p class="text-cream mb-4">Aroma puro de rosas sagradas</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $46.900</p>
+                <p class="text-sm text-cream">6×10: $53.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $42.000</p>
+                <p class="text-sm text-cream">6×10: $49.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Rosa Sagrada 6×6', 46900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 5 - Vela Lavanda Sagrada -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                💜 Serena
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-lavanda-sagrada.jpg" alt="Vela Lavanda Sagrada" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-peace text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA LAVANDA SAGRADA</h3>
+            <p class="text-cream mb-4">Aroma sereno de lavanda sagrada</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $44.900</p>
+                <p class="text-sm text-cream">6×10: $51.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $40.000</p>
+                <p class="text-sm text-cream">6×10: $47.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Lavanda Sagrada 6×6', 44900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+
+          <!-- Product Card 6 - Vela Mirra Sagrada -->
+          <div class="product-card rounded-2xl p-6">
+            <div class="relative">
+              <div class="absolute top-4 right-4 bg-brown-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                🕯️ Ceremonial
+              </div>
+              <div class="w-full h-64 bg-gradient-to-br from-brown-600/20 to-yellow-600/20 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                <!-- Reemplaza con tu imagen real -->
+                <img src="assets/productos/vela-mirra-sagrada.jpg" alt="Vela Mirra Sagrada" class="w-full h-full object-cover rounded-xl">
+                <!-- Icono de respaldo -->
+                <div class="candle-flame w-20 h-20 rounded-full flex items-center justify-center absolute">
+                  <i class="fas fa-pray text-3xl text-black"></i>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-primary elegant-font">VELA MIRRA SAGRADA</h3>
+            <p class="text-cream mb-4">Aroma ceremonial de mirra y oraciones</p>
+            
+            <!-- Precios -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div class="bg-primary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-primary mb-1">PRECIO DETAL</h4>
+                <p class="text-sm text-cream">6×6: $48.900</p>
+                <p class="text-sm text-cream">6×10: $55.900</p>
+              </div>
+              <div class="bg-secondary/10 rounded-lg p-3">
+                <h4 class="text-sm font-bold text-secondary mb-1">PRECIO MAYORISTA</h4>
+                <p class="text-sm text-cream">6×6: $44.000</p>
+                <p class="text-sm text-cream">6×10: $51.000</p>
+              </div>
+            </div>
+            
+            <!-- Medidas -->
+            <div class="bg-warmGray/10 rounded-lg p-3 mb-4">
+              <h4 class="text-sm font-bold text-warmGray mb-1">MEDIDAS</h4>
+              <div class="grid grid-cols-2 gap-2 text-xs text-cream">
+                <p>6×6: 6CM × 6CM</p>
+                <p>6×10: 6CM × 10CM</p>
+                <p>PESO: 180gr - 280gr</p>
+                <p>DURACIÓN: 40-60h</p>
+              </div>
+            </div>
+            
+            <button onclick="addToCart('Vela Mirra Sagrada 6×6', 48900)" class="w-full gold-gradient text-black font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-300">
+              <i class="fas fa-shopping-cart mr-2"></i>Añadir al carrito
+            </button>
+          </div>
+        </div>
+
+        <!-- Call to Action Primera Comunión -->
+        <div class="text-center mt-12">
+          <div class="bg-gradient-to-r from-white/10 to-yellow-600/10 rounded-2xl p-8 border border-white/20">
+            <h3 class="text-2xl font-bold text-primary mb-4 elegant-font">✝️ Celebra la Primera Comunión con Devoción</h3>
+            <p class="text-cream mb-6 max-w-2xl mx-auto">
+              Nuestras velas sagradas están diseñadas para acompañar los momentos más importantes de la fe. Cada vela lleva la bendición y pureza que merece esta celebración.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onclick="scrollToSection('contacto')" class="gold-gradient text-black font-bold py-3 px-8 rounded-full hover:opacity-90 transition-opacity duration-300">
+                <i class="fas fa-cross mr-2"></i>Hacer Pedido Especial
+              </button>
+              <button onclick="scrollToSection('productos')" class="border-2 border-primary text-primary font-bold py-3 px-8 rounded-full hover:bg-primary hover:text-black transition-colors duration-300">
+                <i class="fas fa-shopping-bag mr-2"></i>Ver Todos los Productos
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-6xl font-bold mb-8 elegant-font gold-gradient-text">Sobre Nosotros</h2>
+        <p class="text-xl text-cream leading-relaxed">
+          Elena diseña cada vela artesanalmente usando cera natural y aceites esenciales premium 🌿
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl md:text-6xl font-bold text-center mb-16 elegant-font gold-gradient-text">Contáctanos</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Contact Info -->
+          <div class="space-y-6">
+            <div class="product-card rounded-xl p-6">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                  <i class="fab fa-whatsapp text-xl text-black"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-primary">WhatsApp Principal</h3>
+                  <a href="https://api.whatsapp.com/send/?phone=573008220389&text&type=phone_number&app_absent=0" target="_blank" class="text-white hover:text-primary transition-colors duration-300">+57 300 822 0389</a>
+                  <p class="text-sm text-warmGray">Respuesta inmediata</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card rounded-xl p-6">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+                  <i class="fab fa-whatsapp text-xl text-black"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-secondary">WhatsApp Secundario</h3>
+                  <a href="https://api.whatsapp.com/send/?phone=573246445897&text&type=phone_number&app_absent=0" target="_blank" class="text-white hover:text-secondary transition-colors duration-300">+57 324 644 5897</a>
+                  <p class="text-sm text-warmGray">Respuesta en minutos</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card rounded-xl p-6">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                  <i class="fab fa-instagram text-xl text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-purple-400">Instagram</h3>
+                  <a href="https://www.instagram.com/velasyaromaselena" target="_blank" class="text-white hover:text-purple-400 transition-colors duration-300">@velasyaromaselena</a>
+                  <p class="text-sm text-warmGray">Nuevos productos y ofertas</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card rounded-xl p-6">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                  <i class="fab fa-facebook text-xl text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-blue-400">Facebook</h3>
+                  <a href="https://web.facebook.com/velasyaromascautiva/?_rdc=1&_rdr#" target="_blank" class="text-white hover:text-blue-400 transition-colors duration-300">@velasyaromascautiva</a>
+                  <p class="text-sm text-warmGray">Comunidad y eventos</p>
+                </div>
               </div>
             </div>
           </div>
-        
-        <div class="contacto-details">
-          <h3>Información Adicional</h3>
-          <div class="details-grid">
-            <div class="detail-item">
-              <i class="fas fa-shipping-fast"></i>
-              <div>
-                <h4>Envíos</h4>
-                <p>A todo Colombia</p>
+
+          <!-- Additional Info -->
+          <div class="product-card rounded-xl p-6">
+            <h3 class="text-2xl font-bold mb-6 text-primary elegant-font">Información Adicional</h3>
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-shipping-fast text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold text-primary">Envíos</h4>
+                  <p class="text-cream">A todo Colombia</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="detail-item">
-              <i class="fas fa-clock"></i>
-              <div>
-                <h4>Horarios</h4>
-                <p>Lun - Sáb: 9AM - 6PM</p>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-clock text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold text-primary">Horarios</h4>
+                  <p class="text-cream">Lun - Sáb: 9AM - 6PM</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="detail-item">
-              <i class="fas fa-shield-alt"></i>
-              <div>
-                <h4>Garantía</h4>
-                <p>100% satisfacción</p>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-shield-alt text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold text-primary">Garantía</h4>
+                  <p class="text-cream">100% satisfacción</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="detail-item">
-              <i class="fas fa-credit-card"></i>
-              <div>
-                <h4>Pagos</h4>
-                <p>Contra entrega / Transferencia</p>
+              <div class="flex items-center space-x-4">
+                <i class="fas fa-credit-card text-primary text-xl"></i>
+                <div>
+                  <h4 class="font-bold text-primary">Pagos</h4>
+                  <p class="text-cream">Contra entrega / Transferencia</p>
+                </div>
               </div>
             </div>
           </div>
@@ -327,10 +1604,47 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <p>© 2025 Velas y Aromas Elena</p>
+  <!-- Footer -->
+  <footer class="bg-black py-8 border-t border-primary/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-primary elegant-font">© 2025 Velas y Aromas Elena</p>
+    </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <!-- Chatbot Widget -->
+  <div id="chatbotWidget" class="fixed bottom-6 right-6 z-50">
+    <button id="chatbotToggle" class="gold-gradient text-black p-4 rounded-full shadow-lg hover:opacity-90 transition-opacity duration-300">
+      <i class="fas fa-comments text-2xl"></i>
+    </button>
+    
+    <div id="chatbotPanel" class="hidden absolute bottom-16 right-0 w-80 bg-black border border-primary/30 rounded-lg shadow-xl">
+      <div class="p-4 border-b border-primary/30">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-bold text-primary elegant-font">Asistente Virtual</h3>
+          <button id="closeChatbot" class="text-white hover:text-primary">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div id="chatMessages" class="h-64 overflow-y-auto p-4 space-y-4">
+        <div class="bg-primary/20 rounded-lg p-3">
+          <p class="text-sm">¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte hoy?</p>
+        </div>
+      </div>
+      
+      <div class="p-4 border-t border-primary/30">
+        <div class="flex space-x-2">
+          <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." class="flex-1 bg-white/10 border border-primary/30 rounded-lg px-3 py-2 text-white placeholder-warmGray focus:outline-none focus:border-primary">
+          <button id="sendMessage" class="gold-gradient text-black px-4 py-2 rounded-lg hover:opacity-90 transition-opacity duration-300">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/tailwind-script.js"></script>
 </body>
 </html> 

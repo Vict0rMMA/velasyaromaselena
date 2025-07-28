@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  
+  <!-- Favicon removido temporalmente -->
+  
+  <!-- Accesibilidad -->
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="Spanish">
+  <meta name="geo.region" content="CO">
+  <meta name="geo.placename" content="Colombia">
+  
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  
+  <!-- SEO Meta Tags -->
+  <title>Velas y Aromas Elena - Velas Artesanales y Aromaterapia en Colombia</title>
+  <meta name="description" content="Descubre nuestras velas artesanales hechas con cera natural y aceites esenciales premium. Aromaterapia de calidad en Colombia. Envíos a todo el país." />
+  <meta name="keywords" content="velas artesanales, aromaterapia, velas aromáticas, cera natural, aceites esenciales, Colombia, Elena" />
+  <meta name="author" content="Velas y Aromas Elena" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Velas y Aromas Elena - Velas Artesanales" />
+  <meta property="og:description" content="Velas artesanales con cera natural y aceites esenciales premium. Aromaterapia de calidad." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://velasyaromaselena.com" />
+  <meta property="og:image" content="https://velasyaromaselena.com/assets/hero-bg.jpg" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Velas y Aromas Elena" />
+  <meta name="twitter:description" content="Velas artesanales con cera natural y aceites esenciales premium" />
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Velas y Aromas Elena",
+    "description": "Velas artesanales con cera natural y aceites esenciales premium",
+    "url": "https://velasyaromaselena.com",
+    "telephone": "+573008220389",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CO"
+    },
+    "sameAs": [
+      "https://www.instagram.com/velasyaromaselena",
+      "https://web.facebook.com/velasyaromascautiva"
+    ]
+  }
+  </script>
+  
+  <!-- Preload recursos críticos -->
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="preload" href="js/script.js" as="script">
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <!-- Menú hamburguesa para móviles -->
+      <div class="hamburger-menu" id="hamburgerMenu" role="button" aria-label="Abrir menú de navegación" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <nav class="nav" id="navMenu" role="navigation" aria-label="Navegación principal">
+        <a href="#" aria-label="Ir al inicio"><i class="fas fa-home" aria-hidden="true"></i> Inicio</a>
+        <a href="#productos" aria-label="Ver productos"><i class="fas fa-fire" aria-hidden="true"></i> Productos</a>
+        <a href="#nosotros" aria-label="Conocer más sobre nosotros"><i class="fas fa-heart" aria-hidden="true"></i> Nosotros</a>
+        <a href="#contacto" aria-label="Contactar"><i class="fas fa-envelope" aria-hidden="true"></i> Contacto</a>
+      </nav>
+      
+      <div class="cart-icon" onclick="toggleCart()" role="button" aria-label="Abrir carrito de compras" tabindex="0">
+        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+        <span class="cart-count" id="cartCount" aria-label="Cantidad de productos en el carrito">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Carrito de compras -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-cart"></i> Carrito de Compras</h3>
+      <button class="close-cart" onclick="toggleCart()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Los items del carrito se agregarán aquí dinámicamente -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">$0 COP</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">
+        <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECCIÓN HERO - BIENVENIDA -->
+    <section class="hero">
+      <h1>Descubre el arte de la aromaterapia</h1>
+      <p>Velas artesanales y fragancias naturales ✨</p>
+      <div class="hero-buttons">
+        <button class="cta-button" onclick="scrollToSection('productos')">
+          <i class="fas fa-shopping-cart"></i> Ver Productos
+        </button>
+        <button class="cta-button secondary" onclick="scrollToSection('nosotros')">
+          <i class="fas fa-info-circle"></i> Conoce Más
+        </button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PRODUCTOS - CATÁLOGO -->
+    <hr class="section-divider">
+    <section id="productos" class="galeria">
+      <h2>✨ Nuestras Velas Artesanales ✨</h2>
+      <p class="galeria-subtitle">Descubre nuestra colección de velas aromáticas hechas con cera natural y aceites esenciales premium</p>
+      <div class="productos-container">
+        <!-- COLECCIÓN PRINCIPAL -->
+        <div class="producto">
+          <div class="producto-badge">🔥 Más Vendida</div>
+          <img src="assets/productos/vela1.svg" alt="Cedro Verbena 6×6" loading="lazy" />
+          <h3>CEDRO VERBENA 6×6</h3>
+          <p class="producto-descripcion">Aroma relajante de cedro y verbena</p>
+          <p class="precio">$32.900 COP</p>
+          <button onclick="agregarCarrito('Cedro Verbena 6×6')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">✨ Nueva</div>
+          <img src="assets/productos/vela2.svg" alt="Tilo Bamboo 6×6" loading="lazy" />
+          <h3>TILO BAMBOO 6×6</h3>
+          <p class="producto-descripcion">Fragancia suave de tilo y bambú</p>
+          <p class="precio">$32.900 COP</p>
+          <button onclick="agregarCarrito('Tilo Bamboo 6×6')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">💎 Oferta</div>
+          <img src="assets/productos/vela3.svg" alt="Cedro Verbena 6×10" loading="lazy" />
+          <h3>CEDRO VERBENA 6×10</h3>
+          <p class="producto-descripcion">Versión grande con mayor duración</p>
+          <p class="precio"><s>$44.900</s> $39.900 COP</p>
+          <button onclick="agregarCarrito('Cedro Verbena 6×10')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <!-- NUEVOS PRODUCTOS -->
+        <div class="producto">
+          <div class="producto-badge">🌿 Natural</div>
+          <img src="assets/productos/vela4.svg" alt="Lavanda Relajante 6×6" loading="lazy" />
+          <h3>LAVANDA RELAJANTE 6×6</h3>
+          <p class="producto-descripcion">Aroma calmante de lavanda pura</p>
+          <p class="precio">$35.900 COP</p>
+          <button onclick="agregarCarrito('Lavanda Relajante 6×6')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🌸 Premium</div>
+          <img src="assets/productos/vela5.svg" alt="Rosa Silvestre 6×6" loading="lazy" />
+          <h3>ROSA SILVESTRE 6×6</h3>
+          <p class="producto-descripcion">Fragancia romántica de rosas</p>
+          <p class="precio">$38.900 COP</p>
+          <button onclick="agregarCarrito('Rosa Silvestre 6×6')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🌊 Fresca</div>
+          <img src="assets/productos/vela6.svg" alt="Menta Eucalipto 6×6" loading="lazy" />
+          <h3>MENTA EUCALIPTO 6×6</h3>
+          <p class="producto-descripcion">Aroma refrescante y energizante</p>
+          <p class="precio">$33.900 COP</p>
+          <button onclick="agregarCarrito('Menta Eucalipto 6×6')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <!-- VELAS GRANDES -->
+        <div class="producto">
+          <div class="producto-badge">🕯️ Grande</div>
+          <img src="assets/productos/vela7.svg" alt="Lavanda Relajante 6×10" loading="lazy" />
+          <h3>LAVANDA RELAJANTE 6×10</h3>
+          <p class="producto-descripcion">Versión grande para espacios amplios</p>
+          <p class="precio"><s>$48.900</s> $42.900 COP</p>
+          <button onclick="agregarCarrito('Lavanda Relajante 6×10')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🌟 Premium</div>
+          <img src="assets/productos/vela8.svg" alt="Rosa Silvestre 6×10" loading="lazy" />
+          <h3>ROSA SILVESTRE 6×10</h3>
+          <p class="producto-descripcion">Versión grande con aroma intenso</p>
+          <p class="precio"><s>$52.900</s> $45.900 COP</p>
+          <button onclick="agregarCarrito('Rosa Silvestre 6×10')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+        
+        <div class="producto">
+          <div class="producto-badge">🎁 Regalo</div>
+          <img src="assets/productos/vela9.svg" alt="Set 3 Velas 6×6" loading="lazy" />
+          <h3>SET 3 VELAS 6×6</h3>
+          <p class="producto-descripcion">Pack perfecto para regalo</p>
+          <p class="precio"><s>$98.700</s> $89.900 COP</p>
+          <button onclick="agregarCarrito('Set 3 Velas 6×6')">
+            <i class="fas fa-shopping-cart"></i> Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS - HISTORIA -->
+    <hr class="section-divider">
+    <section id="nosotros" class="nosotros">
+      <h2>Sobre Nosotros</h2>
+      <p>Elena diseña cada vela artesanalmente usando cera natural y aceites esenciales premium 🌿</p>
+    </section>
+
+    <!-- SECCIÓN CONTACTO - INFORMACIÓN -->
+    <hr class="section-divider">
+    <section id="contacto" class="contacto">
+      <h2>Contáctanos</h2>
+              <div class="contacto-container">
+          <div class="contacto-info">
+            <div class="contacto-item whatsapp-primary">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <h3>WhatsApp Principal</h3>
+                <p><a href="https://api.whatsapp.com/send/?phone=573008220389&text&type=phone_number&app_absent=0" target="_blank">+57 300 822 0389</a></p>
+                <small>Respuesta inmediata</small>
+              </div>
+            </div>
+            
+            <div class="contacto-item whatsapp-secondary">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <h3>WhatsApp Secundario</h3>
+                <p><a href="https://api.whatsapp.com/send/?phone=573246445897&text&type=phone_number&app_absent=0" target="_blank">+57 324 644 5897</a></p>
+                <small>Respuesta en minutos</small>
+              </div>
+            </div>
+            
+            <div class="contacto-item instagram">
+              <i class="fab fa-instagram"></i>
+              <div>
+                <h3>Instagram</h3>
+                <p><a href="https://www.instagram.com/velasyaromaselena" target="_blank">@velasyaromaselena</a></p>
+                <small>Nuevos productos y ofertas</small>
+              </div>
+            </div>
+            
+            <div class="contacto-item facebook">
+              <i class="fab fa-facebook"></i>
+              <div>
+                <h3>Facebook</h3>
+                <p><a href="https://web.facebook.com/velasyaromascautiva/?_rdc=1&_rdr#" target="_blank">@velasyaromascautiva</a></p>
+                <small>Comunidad y eventos</small>
+              </div>
+            </div>
+          </div>
+        
+        <div class="contacto-details">
+          <h3>Información Adicional</h3>
+          <div class="details-grid">
+            <div class="detail-item">
+              <i class="fas fa-shipping-fast"></i>
+              <div>
+                <h4>Envíos</h4>
+                <p>A todo Colombia</p>
+              </div>
+            </div>
+            
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Horarios</h4>
+                <p>Lun - Sáb: 9AM - 6PM</p>
+              </div>
+            </div>
+            
+            <div class="detail-item">
+              <i class="fas fa-shield-alt"></i>
+              <div>
+                <h4>Garantía</h4>
+                <p>100% satisfacción</p>
+              </div>
+            </div>
+            
+            <div class="detail-item">
+              <i class="fas fa-credit-card"></i>
+              <div>
+                <h4>Pagos</h4>
+                <p>Contra entrega / Transferencia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Velas y Aromas Elena</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html> 
