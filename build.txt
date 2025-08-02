@@ -1,0 +1,3 @@
+BUILD TIMESTAMP: 2025-02-08 01:33:00
+FORCE UPDATE: Vercel debe usar index.html actualizado
+VERSION: 2.0.0 

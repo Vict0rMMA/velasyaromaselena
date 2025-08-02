@@ -12,17 +12,19 @@
       "src": "/",
       "dest": "/index.html",
       "headers": {
-        "cache-control": "no-cache, no-store, must-revalidate",
+        "cache-control": "no-cache, no-store, must-revalidate, max-age=0",
         "pragma": "no-cache",
-        "expires": "0"
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "surrogate-control": "no-store"
       }
     },
     {
       "src": "/index.html",
       "headers": {
-        "cache-control": "no-cache, no-store, must-revalidate",
+        "cache-control": "no-cache, no-store, must-revalidate, max-age=0",
         "pragma": "no-cache",
-        "expires": "0"
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "surrogate-control": "no-store"
       }
     },
     {
