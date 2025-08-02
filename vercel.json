@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "velas-y-aromas-elena",
+  "name": "velasyaromaselena",
   "builds": [
     {
       "src": "**/*",
@@ -8,6 +8,23 @@
     }
   ],
   "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "pragma": "no-cache",
+        "expires": "0"
+      }
+    },
+    {
+      "src": "/index.html",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "pragma": "no-cache",
+        "expires": "0"
+      }
+    },
     {
       "src": "/assets/(.*)",
       "headers": {
