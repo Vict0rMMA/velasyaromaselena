@@ -636,5 +636,4 @@ function closeMobileMenu() {
 }
 
 // Hacer la función global
-window.closeMobileMenu = closeMobileMenu; / /   A c t u a l i z a d o :   0 8 / 0 2 / 2 0 2 5   0 1 : 2 6 : 1 8  
- 
+window.closeMobileMenu = closeMobileMenu; 
